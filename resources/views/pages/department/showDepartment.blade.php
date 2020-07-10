@@ -2,6 +2,6 @@
 
 @section('content')
 
-<p>Department view</p>
+<p>Department viewy</p>
  
 @endsection
