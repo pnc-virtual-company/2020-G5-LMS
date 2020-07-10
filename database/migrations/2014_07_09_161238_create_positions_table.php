@@ -22,7 +22,7 @@ class CreatePositionsTable extends Migration
         // Insert default position
         DB::table('positions')->insert(
             array(
-                'id'=>1,
+                'id'=>1, // 1: admin 2 : HR 3: manager 4 : employee
                 'position'=> 'Admin'
             )
         );
