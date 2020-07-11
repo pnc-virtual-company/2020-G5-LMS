@@ -29,7 +29,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -54,6 +53,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
