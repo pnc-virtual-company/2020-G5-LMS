@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Leave;
+use App\User;
 class leaveController extends Controller
 {
     /**

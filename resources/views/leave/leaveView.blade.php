@@ -21,7 +21,6 @@
                   @foreach ($leave as $leaves)
                   <tr>
                      <td>{{$leaves->user->firstName." "}}{{" ".$leaves->user->lastName}}</td>
-                     <td>{{$leaves->user->firstName}}</td>
                      <td>{{$leaves->startDate}}</td>
                      <td>{{$leaves->endDate}}</td>
                      <td>{{$leaves->duration}}</td>
