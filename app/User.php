@@ -39,4 +39,10 @@ class User extends Authenticatable
     public function leaves(){
         return $this->hasMany(Leave::class);
     }
+    public function department(){
+        return $this->hasMany(Department::class);
+    }
+    public function positions(){
+        return $this->hasMany(Position::class);
+    }
 }

@@ -45,8 +45,8 @@ class CreateUsersTable extends Migration
                 'profile'=>'profile.png',
                 'position_id'=>1,
                 'remember_token' => Str::random(10)
-            )
-            );
+            ),
+         );
     }
 
     /**
