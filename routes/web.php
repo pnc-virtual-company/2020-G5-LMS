@@ -19,4 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/leave', 'leaveController');
+
+Route::get('/showDepartment', 'DepartmentController@index')->name('showDepartment');
+Route::get('/showPosition', 'PositionController@index')->name('showPosition');
+Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
+Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
+Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
