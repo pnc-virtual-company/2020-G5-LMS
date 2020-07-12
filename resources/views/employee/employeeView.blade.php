@@ -23,7 +23,8 @@
                   </button>
                 </span>
             </div>
-            <table class="table table-border mt-5" id="employee" class="display" cellspacing="0">
+             <a href="#" class="btn btn-primary mt-5 float-right">Create</a>
+            <table class="table table-border" id="employee" class="display" cellspacing="0">
                     <tr>
                         <th>Firstname</th>
                         <th>Lastname</th>
