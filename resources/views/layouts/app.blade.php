@@ -33,25 +33,25 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-
-            <div class="menu">
-                <a class="navbar-brand" href="{{ route('showYourLeave') }}" onfocus="myFunction(this)">
-                    {{ __('Your leave') }}
-                </a>
-                <a class="navbar-brand" href="{{ route('showLeave') }}" onfocus="myFunction(this)">
-                    {{ __('Leaves') }}
-                </a>
-                <a class="navbar-brand" href="{{ route('showEmployee') }}" onfocus="myFunction(this)">
-                    {{ __('Employees') }}
-                </a>
-                <a class="navbar-brand" href="{{ route('showPosition') }}" onfocus="myFunction(this)">
-                    {{ __('Positions') }}
-                </a>
-                <a class="navbar-brand" href="{{ route('showDepartment') }}" onfocus="myFunction(this)">
-                    {{ __('Department') }}
-                </a>
-            </div>
-
+                @if(Auth::check())
+                <div class="menu">
+                    <a class="navbar-brand" href="{{ route('showYourLeave') }}" onfocus="myFunction(this)">
+                        {{ __('Your leave') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ route('showLeave') }}" onfocus="myFunction(this)">
+                        {{ __('Leaves') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ route('showEmployee') }}" onfocus="myFunction(this)">
+                        {{ __('Employees') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ route('showPosition') }}" onfocus="myFunction(this)">
+                        {{ __('Positions') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ route('showDepartment') }}" onfocus="myFunction(this)">
+                        {{ __('Department') }}
+                    </a>
+                </div>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -92,8 +92,15 @@
                 </div>
             </div>
         </nav>
-
-
+        @if(Auth::check())
+        <div class="row mt-3">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            </div>
+            <div class="col-2"></div>
+        </div>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>
