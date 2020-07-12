@@ -1,18 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
 
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <input class="form-control" id="myInput" type="text" placeholder="Search..">
-        </div>
-        <div class="col-2"></div>
-    </div>
-
-    <div class="row mt-5">
         <div class="col-2"></div>
         <div class="col-4"><h1>Department</h1></div>
         <div class="col-4">
@@ -30,7 +21,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                     <tr>
                         <td>Training and education team</td>
                         <td class="float-right" >
