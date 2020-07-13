@@ -31,6 +31,7 @@
 </head>
 <body>
     <div id="app">
+        @if (Auth::check())
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
@@ -74,13 +75,35 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <strong> {{ Auth::user()->firstName }} <span class="caret"></span> </strong>
                                 </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
+        
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        @endif
 
         <main class="py-4">
             @yield('content')
@@ -91,6 +114,18 @@
         function myFunction(x) {
           x.style.color = "blue";
         }
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
     </script>
 
 </body>
