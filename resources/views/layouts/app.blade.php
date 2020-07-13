@@ -31,27 +31,28 @@
 </head>
 <body>
     <div id="app">
+        @if (Auth::check())
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                @if(Auth::check())
-                <div class="menu">
-                    <a class="navbar-brand" href="{{ route('showYourLeave') }}" onfocus="myFunction(this)">
-                        {{ __('Your leave') }}
-                    </a>
-                    <a class="navbar-brand" href="{{ route('showLeave') }}" onfocus="myFunction(this)">
-                        {{ __('Leaves') }}
-                    </a>
-                    <a class="navbar-brand" href="{{ route('showEmployee') }}" onfocus="myFunction(this)">
-                        {{ __('Employees') }}
-                    </a>
-                    <a class="navbar-brand" href="{{ route('showPosition') }}" onfocus="myFunction(this)">
-                        {{ __('Positions') }}
-                    </a>
-                    <a class="navbar-brand" href="{{ route('showDepartment') }}" onfocus="myFunction(this)">
-                        {{ __('Department') }}
-                    </a>
-                </div>
-                @endif
+
+            <div class="menu">
+                <a class="navbar-brand" href="{{ route('showYourLeave') }}" onfocus="myFunction(this)">
+                    {{ __('Your leave') }}
+                </a>
+                <a class="navbar-brand" href="{{ route('showLeave') }}" onfocus="myFunction(this)">
+                    {{ __('Leaves') }}
+                </a>
+                <a class="navbar-brand" href="{{ route('showEmployee') }}" onfocus="myFunction(this)">
+                    {{ __('Employees') }}
+                </a>
+                <a class="navbar-brand" href="{{ route('showPosition') }}" onfocus="myFunction(this)">
+                    {{ __('Positions') }}
+                </a>
+                <a class="navbar-brand" href="{{ route('showDepartment') }}" onfocus="myFunction(this)">
+                    {{ __('Department') }}
+                </a>
+            </div>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -92,6 +93,7 @@
                 </div>
             </div>
         </nav>
+        
         <div class="container mt-5">
             <div class="row">
                 <div class="col-2"></div>
@@ -101,7 +103,8 @@
                 <div class="col-2"></div>
             </div>
         </div>
-        
+        @endif
+
         <main class="py-4">
             @yield('content')
         </main>
@@ -111,6 +114,18 @@
         function myFunction(x) {
           x.style.color = "blue";
         }
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
     </script>
 
 </body>
