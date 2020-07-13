@@ -92,6 +92,16 @@
                 </div>
             </div>
         </nav>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        
         <main class="py-4">
             @yield('content')
         </main>
