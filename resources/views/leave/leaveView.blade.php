@@ -30,6 +30,7 @@
                         <th>End date</th>
                         <th>Duration</th>
                         <th>Type</th>
+                        <th>action</th>
                     </tr>
                 </thead>
                   @foreach ($leave as $leaves)
@@ -50,7 +51,6 @@
             </table>
            </div>
        </div>
-       
        <script>
     $(document).ready(function(){
     $("#myInput").on("keyup", function() {
