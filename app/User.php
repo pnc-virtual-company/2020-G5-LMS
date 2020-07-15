@@ -36,6 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function leaves(){
+        return $this->hasMany(Leave::class);
+    }
+    public function department(){
+        return $this->hasMany(Department::class);
+    }
     public function positions(){
         return $this->hasMany(Position::class);
     }
