@@ -13,16 +13,14 @@
                    <th>Start Date</th>
                    <th>Action</th>
                  </th>
-              @foreach ($depart as $departs)
+              @foreach ($user as $users)
               <tbody id="myTable">
                <tr>
-                   <td>{{$departs->user->firstName}}</td>
-                   <td>{{$departs->user->lastName}}</td>
-                   <td>{{$departs->department}}</td>
-                    @foreach ($position as $positions)
-                    <td>{{$positions->position}}</td> 
-                    @endforeach
-                   <td>{{$departs->user->startDate}}</td>
+                   <td>{{$users->firstName}}</td>
+                   <td>{{$users->lastName}}</td>
+                   <td>{{$users->departments->department}}</td> 
+                   <td>{{$users->positions->position}}</td> 
+                   <td>{{$users->startDate}}</td>
                    <td></td>
                  </tr>
               </tbody>
@@ -30,7 +28,4 @@
          </table>
     </div>
 </div>
-<script>
-
-</script>
 @endsection

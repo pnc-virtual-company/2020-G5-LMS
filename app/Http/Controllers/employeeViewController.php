@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Position;
 use App\User;
-use App\Department;
 
 class employeeViewController extends Controller
 {
@@ -17,10 +15,8 @@ class employeeViewController extends Controller
      */
     public function index()
     {
-        $depart = Department::all();
         $user = User::all();
-        $position = Position::all();
-        return view('showEmployee.employeeView',compact(['depart','position']));
+        return view('showEmployee.employeeView',compact('user'));
     }
 
     /**
