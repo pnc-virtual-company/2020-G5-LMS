@@ -42,7 +42,7 @@
                 <a class="navbar-brand" href="{{ route('request.index') }}" onfocus="myFunction(this)">
                     {{ __('Leaves') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('showEmployee') }}" onfocus="myFunction(this)">
+                <a class="navbar-brand" href="{{ route('employee.index') }}" onfocus="myFunction(this)">
                     {{ __('Employees') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('showPosition') }}" onfocus="myFunction(this)">
