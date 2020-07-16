@@ -57,6 +57,11 @@
                         <a href=""><button class="bnt btn-success">Rejected</button></a>
                         
                         @endif
+                        @if($leave -> status == 4 )
+                        <a href=""><button class="bnt btn-success">Accepted</button></a>
+                        
+                        @endif
+
 
                     </td>
                 </tr>
