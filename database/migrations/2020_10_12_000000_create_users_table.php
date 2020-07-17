@@ -28,6 +28,11 @@ class CreateUsersTable extends Migration
                   ->references('id')
                   ->on('positions')
                   ->onDelete('cascade');
+            $table->integer('department_id')->unsigned();
+            $table->foreign('department_id')
+                    ->references('id')
+                    ->on('departments')
+                    ->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -44,6 +49,7 @@ class CreateUsersTable extends Migration
                 'startDate'=>'2020-07-10',
                 'profile'=>'profile.png',
                 'position_id'=>1,
+                'department_id'=>1,
                 'remember_token' => Str::random(10)
             )
             );

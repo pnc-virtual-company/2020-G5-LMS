@@ -16,11 +16,6 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('department');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -29,7 +24,6 @@ class CreateDepartmentsTable extends Migration
             array(
                 'id'=>1,
                 'department'=> 'Education',
-                'user_id'=>1
             )
         );
     }
