@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+       <title>leaveView</title>
        <div class="container">
            <div class="col-12">
             <table class="table table mt-5">
