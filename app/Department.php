@@ -8,7 +8,7 @@ use App\User;
 class Department extends Model
 {
     protected $fillable = [
-        'department', 'user_id',
+        'department',
     ];
 
     public function users(){
