@@ -5,7 +5,7 @@
             <table class="table table mt-5">
                 <thead>
                     <tr>
-                        <th>Employee</th>
+                        <th>Employees</th>
                         <th>Start date</th>
                         <th>End date</th>
                         <th>Duration</th>
