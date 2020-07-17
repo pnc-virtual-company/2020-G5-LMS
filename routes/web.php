@@ -24,4 +24,7 @@ Route::get('/showDepartment', 'DepartmentController@index')->name('showDepartmen
 Route::get('/showPosition', 'PositionController@index')->name('showPosition');
 Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
-Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
+Route::get('/showYourLeave', 'YourLeavesController@index')->name('showYourLeave');
+Route::resource('employee', 'employeeViewController');
+Route::resource('deleteEmployee', 'employeeViewController');
+

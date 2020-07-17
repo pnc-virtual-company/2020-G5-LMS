@@ -4,18 +4,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <div class="container mt-5">
       <div class="col-12">
        
-            <div class="rows">
+            {{-- <div class="rows">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search..."><br>
                 </div>
                 <div class="col-1"></div>
-            </div>
+            </div> --}}
         
           <div class="row">
               <div class="col-6">
@@ -28,50 +35,55 @@
           
         <br>
         
-            <table class="table table-bordered">
-                <tr>
-                    <th>Start date</th>
-                    <th>End date</th>
-                    <th>Duration</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                </tr>
-
+            <table class="table table-borderless table-hover" id="myTable">
+                <thead>
+                    <tr>
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Duration</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 @foreach ($leaves as $leave)
-                
-                <tr>
+                <tbody id="btn">
+                    <tr>
                     
-                    <td>{{$leave->startDate}}</td>
-                    <td>{{$leave->endDate}}</td>
-                    <td>{{$leave->duration}}</td>
-                    <td>{{$leave->types}}</td>
-                    <td>
-                        @if ($leave -> status == 1)
+                        <td>{{$leave->startDate}}</td>
+                        <td>{{$leave->endDate}}</td>
+                        <td>{{$leave->duration}}</td>
+                        <td>{{$leave->types}}</td>
+                        <td>
+                            
+                       
+                            @if ($leave -> status == 1)
                             <a href=""><button class="bnt btn-primary">Requested</button></a>
-                        @endif  
+                            @endif
+                            @if($leave -> status == 2) 
+                            <a href=""><button class="bnt btn-danger">Cancelled</button></a>
+                            @elseif($leave -> status == 3)
+                            <a href=""><button class="bnt btn-danger">Rejected</button></a>
 
-                        @if($leave -> status == 2  )
-                        <a href=""><button class="bnt btn-danger">Cancelled</button></a>
-                        @endif  
-                        @if($leave -> status == 3 )
-                        <a href=""><button class="bnt btn-success">Rejected</button></a>
-                        
-                        @endif
-                        @if($leave -> status == 4 )
-                        <a href=""><button class="bnt btn-success">Accepted</button></a>
-                        
-                        @endif
+                            @elseif($leave -> status == 4)
+                            <a href=""><button class="bnt btn-success">Accepted</button></a>
+                            @endif
 
 
-                    </td>
-                </tr>
-                
+                        </td>
+                      
+                      
+                        <td >
+                                
+                        </td>
+                    </tr>
+                </tbody>
               
                 @endforeach
-
                 
             </table>
         </div>
+        
     </div>
 </body>
 </html>

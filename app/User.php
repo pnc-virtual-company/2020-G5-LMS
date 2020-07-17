@@ -36,7 +36,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // public function positions(){
+    //     return $this->hasMany(Position::class);
+    // }
+
+    // public function positions(){
+    //     return $this->belongsTo(Position::class,'position_id');
+    // }
+    // public function departments(){
+    //     return $this->belongsTo(Department::class,'department_id');
+    //  }
+    // public function leaves(){
+    //     return $this->hasMany(Leave::class);
+    // }
     public function positions(){
-        return $this->hasMany(Position::class);
+        return $this->belongsTo(Position::class,'position_id');
     }
+    public function departments(){
+        return $this->belongsTo(Department::class,'department_id');
+     }
+     
 }
+
