@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::get('/showPosition', 'PositionController@index')->name('showPosition');
 Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
 Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
+Route::resource('/leave', 'leaveController');
+Route::resource('request','leaveRequesController');
+Route::resource('employee','employeeViewController');

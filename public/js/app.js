@@ -49895,3 +49895,16 @@ module.exports = __webpack_require__(/*! C:\xampp\htdocs\leaveManagementSystem\r
 /***/ })
 
 /******/ });
+
+$(document).ready(function(){
+  //  mouse hover on table
+  var trIndex = null;
+  $("#employee tr td").mouseenter(function() {
+  trIndex = $(this).parent();
+  $(trIndex).find("td:last-child").html('<a href="#"><i class="material-icons" style="color:red;">mode_delete</i></a>&nbsp;&nbsp;<a href="#"><i class="material-icons">mode_edit</i></a>');
+  });
+  // remove button on tr mouseleave
+  $("#employee tr td").mouseleave(function() {
+  $(trIndex).find('td:last-child').html("&nbsp;");
+});
+});

@@ -3,10 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-class Position extends Model
+
+class Leave extends Model
 {
     public function user(){
-        return $this->hasMany(User::class);
-    }
+        return $this->belongsTo(User::class);
+     }
 }

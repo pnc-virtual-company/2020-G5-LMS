@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +16,7 @@
                 <a href="" class="" ><button class="btn btn-warning float-right text-white">Request a leave</button></a>
               </div>
           </div>
-          
         <br>
-        
             <table class="table table-bordered">
                 <tr>
                     <th>Start date</th>
