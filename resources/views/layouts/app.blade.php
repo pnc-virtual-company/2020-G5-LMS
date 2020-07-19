@@ -24,8 +24,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        a:focus{
-            color: blue;
+        table.glyphicon-hover .glyphicon {
+            visibility: hidden;
+        }
+        table.glyphicon-hover td:hover .glyphicon {
+            visibility: visible;
         }
     </style>
 </head>
