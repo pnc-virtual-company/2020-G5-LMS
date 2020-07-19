@@ -85,6 +85,14 @@ hr {
   overflow: visible;
 }
 
+.glyphicon-hover .glyphicon{
+  visibility: hidden;
+}
+
+.glyphicon-hover td:hover .glyphicon{
+  visibility: visible;
+}
+
 h1,
 h2,
 h3,
