@@ -10941,18 +10941,12 @@ table {
   font-family: verdana;
   font-size: 12px;
   }
-  
-  table th {
-  text-align: left;
-  background: #D3D3D3;
-  padding: 2px;
-  }
-  
+
   table tr:hover {
   background: #EFEFEF;
-  }
+  } 
   
-  table tr {
+   table tr {
   text-align: left;
   }
   
@@ -10962,4 +10956,4 @@ table {
   
   table td a {
   color: #0454B5;
-  }
+  } 

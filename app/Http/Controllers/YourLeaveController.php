@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Leave;
+use App\User;
 
 class YourLeaveController extends Controller
 {
     public function index(){
-        return view('pages.yourLeave.yourLeave');
+        $leaves = Leave::all();
+        return view('pages.yourLeave.yourLeave',compact('leaves'));
     }
 }

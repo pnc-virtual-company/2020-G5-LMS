@@ -27,6 +27,8 @@ Route::get('/editDepartment/{id}', 'DepartmentController@edit')->name('editDepar
 Route::patch('/updateDepartment/{id}', 'DepartmentController@update')->name('updateDepartment');
 Route::delete('/deleteDepartment/{id}', 'DepartmentController@destroy')->name('deleteDepartment');
 
+Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('deleteEmployee');
+
 Route::get('/showPosition', 'PositionController@index')->name('showPosition');
 Route::post('addPosition', 'PositionController@addPosition')->name('addPosition');
 Route::patch('editPosition/{id}', 'PositionController@editPosition')->name('editPosition');
@@ -37,3 +39,4 @@ Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave')
 Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 Route::resource('employee','employeeViewController');
+Route::resource('deleteEmployee', 'employeeViewController');
