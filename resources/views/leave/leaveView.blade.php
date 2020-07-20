@@ -15,15 +15,6 @@
 <body>
     <div class="container mt-5">
       <div class="col-12">
-       
-            {{-- <div class="rows">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..."><br>
-                </div>
-                <div class="col-1"></div>
-            </div> --}}
-        
           <div class="row">
               <div class="col-6">
                   <h2>Your leave requests</h2>
