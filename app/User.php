@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Position;
+use App\Department;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,7 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function leaves(){
+        return $this->hasMany(Leave::class);
+    }
     public function positions(){
-        return $this->hasMany(Position::class);
+        return $this->belongsTo(Position::class,'position_id');
+    }
+
+    public function department(){
+        return $this->belongsTo(Department::class);
     }
 }
