@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Department;
+use App\Position;
 
 class employeeViewController extends Controller
 {
@@ -15,8 +16,8 @@ class employeeViewController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('showEmployee.employeeView',compact('user'));
+        $users = User::all();
+        return view('showEmployee.employeeView',compact('users'));
     }
 
     /**
@@ -59,7 +60,10 @@ class employeeViewController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $departments = Department::all();
+        $positions = Position::all();
+        return view('showEmployee.edit',compact('user', 'departments', 'positions'));
     }
 
     /**
@@ -71,8 +75,24 @@ class employeeViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
+        $user->department_id = $request->department;
+        $user->position_id = $request->position;
+        $user->startDate = $request->startDate;
+        if ($request->hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        $user->save();
+        redirect('/employee.index');
     }
+}
+
+
 
     /**
      * Remove the specified resource from storage.
