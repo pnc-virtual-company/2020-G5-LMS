@@ -17,9 +17,9 @@
             <table id="myTable" class="table table-borderless glyphicon-hover table-hover">
                 <thead>
                     <tr>
-                        <th></th>
                     </tr>
                 </thead>
+                <br>
                 @foreach ($positions as $position)
                 <tbody>
                     <tr>

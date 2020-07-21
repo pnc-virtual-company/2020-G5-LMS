@@ -19,9 +19,9 @@
             <table class="table table-borderless table-hover glyphicon-hover">
                 <thead>
                     <tr>
-                        <th></th>
                     </tr>
                 </thead>
+                <br>
                 <tbody id="myTable">
                     @foreach ($departments as $department)
                     <tr>
