@@ -39,7 +39,7 @@
             <div class="container">
 
             <div class="menu">
-                <a class="navbar-brand" href="{{ route('showYourLeave') }}" onfocus="myFunction(this)">
+                <a class="navbar-brand" href="{{ route('home') }}" onfocus="myFunction(this)">
                     {{ __('Your leave') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('request.index') }}" onfocus="myFunction(this)">
