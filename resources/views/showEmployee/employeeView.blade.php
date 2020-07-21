@@ -31,8 +31,6 @@
                    <th>Department</th>
                    <th>Position</th>
                    <th>Start Date</th>
-                   
-                 
                 </tr>
               @foreach ($user as $users)
               <tbody id="myTable">
@@ -41,10 +39,9 @@
                    <td class="action">{{$users->lastName}}</td>
                    <td class="action">{{$users->departments->department}}</td>
                    <td class="action">{{$users->positions->position}}</td> 
-                   <td class="action" >{{$users->startDate}}</td>  
+                   <td class="action">{{$users->startDate}}</td>  
                    <td class="action_hidden">
                     <a onclick="document.getElementById('{{'user_id'.$users->id}}').submit()" href="#"><i class="material-icons text-danger">delete</i></a>
-                    
                     <form id="{{'user_id'.$users->id}}" action="{{route('employee.destroy',$users->id)}}" method="post">
                       @csrf
                       @method('delete')

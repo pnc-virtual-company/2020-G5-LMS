@@ -7,7 +7,7 @@
       <div class="card">
           <div class="card-header text-center">Add employee</div>
           <div class="card-body">
-              <form action="{{route('employee.store')}}" method="POST">
+              <form action="{{route('addEmployee',Auth::id())}}" method="POST">
                 @csrf
                   <div class="form-group">
                     <input type="text" name="first" placeholder="Firstname" class="form-control">

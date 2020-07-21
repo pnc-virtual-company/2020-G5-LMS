@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-
+use App\Department;
+use App\Position;
 class employeeViewController extends Controller
 {
     /**
@@ -26,7 +27,10 @@ class employeeViewController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::all();
+        $depart = Department::all();
+        $position = Position::all();
+        return view('showEmployee.employeeAdd',compact(['user','depart','position']));
     }
 
     /**
@@ -35,9 +39,9 @@ class employeeViewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        
     }
 
     /**
@@ -59,7 +63,7 @@ class employeeViewController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -85,5 +89,16 @@ class employeeViewController extends Controller
         $user = User::find($id);
         $user->delete();
         return back();
+    }
+    
+    function addEmployee(Request $request,$id){
+        $user =  User::find($id);
+        $user->firstName = $request->get('first');
+        $user->lastName = $request->get('last');
+        $user->startDate = $request->get('date');
+        $user->department_id = $request->get('depart');
+        $user->position_id = $request->get('position');
+        $user->save();
+        return redirect('employee');
     }
 }
