@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use\App\User;
 class Department extends Model
 {
-     public function departments(){
+    public function users(){
         return $this->hasMany(User::class);
-    }
+}
 }

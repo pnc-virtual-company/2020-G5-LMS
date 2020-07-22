@@ -17,7 +17,9 @@ class employeeViewController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('showEmployee.employeeView',compact('users'));
+        $department = Department::all();
+        $position = Position::all();
+        return view('showEmployee.employeeView',['users' => $users,] ,compact('department','position'));
     }
 
     /**
@@ -88,7 +90,7 @@ class employeeViewController extends Controller
             $file->move('img/', $filename);
             $user->profile = $filename;
         $user->save();
-        redirect('/employee.index');
+        return back();
     }
 }
 
