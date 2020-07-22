@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Department;
 use App\Position;
+use Laravel\Ui\Presets\React;
+
 class employeeViewController extends Controller
 {
     /**
@@ -17,7 +19,9 @@ class employeeViewController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('showEmployee.employeeView',compact('user'));
+        $depart = Department::all();
+        $position = Position::all();
+        return view('showEmployee.employeeView',compact(['user','depart','position']));
     }
 
     /**
@@ -27,10 +31,11 @@ class employeeViewController extends Controller
      */
     public function create()
     {
-        $user = User::all();
-        $depart = Department::all();
-        $position = Position::all();
-        return view('showEmployee.employeeAdd',compact(['user','depart','position']));
+        
+    }
+    function editEmployee(){
+       
+        return view('showEmployee.employeeView');
     }
 
     /**
@@ -39,11 +44,32 @@ class employeeViewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
-        
+         $user =  User::find(Auth::id());
+         $user =  new User;
+         $user->firstName = $request->get('first');
+         $user->lastName = $request->get('last');
+         $user->startDate = $request->get('date');
+         $user->email = $request->get('email');
+         $user->role = $request->get('role');
+         $user->password = bcrypt($request->get('new_password'));
+         $user->department_id = $request->get('depart');
+         $user->position_id = $request->get('position');
+         if ($request->hasfile('profile')){
+            $file = $request->file('profile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile= $filename;
+            $user->save();
+        }
+         $user->save();
+         return redirect('employee');
     }
-
+    // public function addEmployee(Request $request){
+       
+    // }
     /**
      * Display the specified resource.
      *
@@ -54,7 +80,10 @@ class employeeViewController extends Controller
     {
         //
     }
-
+    function detailEmployee($id){
+        $user = User::find($id);
+        return view('showEmployee.employeeView',compact('user'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -91,14 +120,4 @@ class employeeViewController extends Controller
         return back();
     }
     
-    function addEmployee(Request $request,$id){
-        $user =  User::find($id);
-        $user->firstName = $request->get('first');
-        $user->lastName = $request->get('last');
-        $user->startDate = $request->get('date');
-        $user->department_id = $request->get('depart');
-        $user->position_id = $request->get('position');
-        $user->save();
-        return redirect('employee');
-    }
 }
