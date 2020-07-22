@@ -80,10 +80,7 @@ class employeeViewController extends Controller
     {
         //
     }
-    function detailEmployee($id){
-        $user = User::find($id);
-        return view('showEmployee.employeeView',compact('user'));
-    }
+   
     /**
      * Show the form for editing the specified resource.
      *

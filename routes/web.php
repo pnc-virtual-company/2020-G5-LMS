@@ -41,4 +41,3 @@ Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 Route::resource('employee','employeeViewController');
 Route::resource('deleteEmployee', 'employeeViewController');
-Route::get('profile','employeeViewController@detailEmployee')->name('profile');
