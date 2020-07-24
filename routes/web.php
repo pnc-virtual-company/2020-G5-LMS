@@ -40,3 +40,4 @@ Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 Route::resource('employee','employeeViewController');
 Route::resource('deleteEmployee', 'employeeViewController');
+Route::delete('/deleteYourLeave/{id}', 'HomeController@destroy')->name('deleteYourLeave');

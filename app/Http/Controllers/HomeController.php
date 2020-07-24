@@ -25,4 +25,11 @@ class HomeController extends Controller
         $leaves = Leave::all();
         return view('home',compact('leaves'));
     }
+    
+    public function destroy($id)
+    {
+        $leaves = Leave::find($id);
+        $leaves ->delete();
+       return redirect('/home');
+    }
 }
