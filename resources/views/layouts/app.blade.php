@@ -135,7 +135,51 @@
         });
       });
     });
-
+      
     </script>
+    <!-- The Modal -->
+<div class="modal" id="myModals">
+    <div class="modal-dialog">
+       <div class="modal-content" style="border-radius: 20px;">
+       
+             <!-- Modal Header -->
+             <div class="modal-header">
+               <h4 class="modal-title">My information</h4>
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+       
+             <!-- Modal body -->
+             <div class="modal-body">
+               <table class="table table-borderless">
+                 <tr>
+                     <th class="header-table">Firstname</th>
+                     <td>{{Auth::user()->firstName}}</td>
+                 </tr>
+                 <tr>
+                     <th class="header-table">Lastname</th>
+                     <td>{{Auth::user()->lastName}}</td>
+                 </tr>
+                   <tr>
+                     <th class="header-table">Department</th>
+                     <td>{{Auth::user()->department->department}}</td>
+                   </tr>
+                   <tr>
+                     <th class="header-table">Position</th>
+                     <td>{{Auth::user()->position->position}}</td>
+                   </tr>
+                   <tr>
+                     <th class="header-table">Startdate</th>
+                     <td>{{Auth::user()->startDate}}</td>
+                   </tr>
+              </table>
+             </div>
+             <!-- Modal footer -->
+             <div class="modal-footer">
+               <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+             </div>
+       
+           </div>
+         </div>
+   </div>
 </body>
 </html>

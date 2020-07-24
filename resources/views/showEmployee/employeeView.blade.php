@@ -31,6 +31,7 @@
                    <th>Lastname</th>
                    <th>Department</th>
                    <th>Position</th>
+                   <th>Manager</th>
                    <th>Start Date</th>
                 </tr>
               @foreach ($user as $users)
@@ -38,8 +39,13 @@
                <tr >
                    <td class="action">{{$users->firstName}}</td>
                    <td class="action">{{$users->lastName}}</td>
-                   <td class="action">{{$users->departments->department}}</td>
-                   <td class="action">{{$users->positions->position}}</td> 
+                   <td class="action">{{$users->department->department}}</td>
+                   <td class="action">{{$users->position->position}}</td> 
+                   <td class="action">
+                    @if($users ->role  == 3)
+                      {{$users->firstName}}
+                    @endif
+                   </td>
                    <td class="action">{{$users->startDate}}</td>  
                    <td class="action_hidden">
                     <a onclick="document.getElementById('{{'user_id'.$users->id}}').submit()" href="#"><i class="material-icons text-danger">delete</i></a>
@@ -106,7 +112,14 @@
               </div>
                <div class="col-6">
                 <div class="form-group">
-                  ​<input type="file" name="profile" class="form-control" required autocomplete="profile" required>
+                  <select name="manager" class="form-control">
+                    <option value="">manager</option>
+                     @foreach ($collection as $item)
+                        @@if ()
+                        <option value=""></option>
+                        @endif
+                     @endforeach
+                  </select>
                 </div>
                </div>
                <div class="col-6">

@@ -56,14 +56,7 @@ class employeeViewController extends Controller
          $user->password = bcrypt($request->get('new_password'));
          $user->department_id = $request->get('depart');
          $user->position_id = $request->get('position');
-         if ($request->hasfile('profile')){
-            $file = $request->file('profile');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time(). ".".$extension;
-            $file->move('img/', $filename);
-            $user->profile= $filename;
-            $user->save();
-        }
+         $user->manager = $request->get('manager');
          $user->save();
          return redirect('employee');
     }
