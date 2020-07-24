@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Leave;
 use App\User;
 use Illuminate\Http\Request;
+<<<<<<< HEAD:app/Http/Controllers/leaveController.php
+=======
 
 class leaveRequesController extends Controller
 {
@@ -28,60 +30,11 @@ class leaveRequesController extends Controller
     {
         //
     }
+>>>>>>> e9aed7c557b92efaba00a4a7524aa32bf95c789a:app/Http/Controllers/leaveRequesController.php
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+class LeaveController extends Controller
+{
+    public function index(){
+        return view('pages.leave.allLeave');
     }
 }
