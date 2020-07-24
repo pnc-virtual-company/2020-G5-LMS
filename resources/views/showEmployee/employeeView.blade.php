@@ -16,12 +16,12 @@
         @foreach ($users as $user)
           <tbody id="myTable">
             <tr data-id="{{ $user->id }}">
-              <td>{{$user->firstName}}</td>
-              <td>{{$user->lastName}}</td>
-              <td>{{$user->department->department}}</td> 
-              <td>{{$user->position->position}}</td> 
-              <td>{{$user->startDate}}</td>
-              <td>
+              <td class="action">{{$user->firstName}}</td>
+              <td class="action">{{$user->lastName}}</td>
+              <td class="action">{{$user->department->department}}</td> 
+              <td class="action">{{$user->position->position}}</td> 
+              <td class="action">{{$user->startDate}}</td>
+              <td class="action_hidden">
                 <a href=""><i class="material-icons" style="color:red;">mode_delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
@@ -32,7 +32,6 @@
                   data-startdate={{$user->startDate}}
                   data-profile={{$user->profile}}>
                 <i class="material-icons">mode_edit</i></a>
-                
               </td>
             </tr>
           </tbody>
@@ -106,5 +105,12 @@
 </div>
 <!--End Modal -->
 @endsection
-
-
+<style>
+  .action_hidden{
+    display: none;
+  }
+  .action:hover + .action_hidden{
+  display: block;
+  }
+  
+</style>
