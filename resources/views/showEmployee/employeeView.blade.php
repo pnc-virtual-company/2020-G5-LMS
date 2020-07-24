@@ -30,6 +30,7 @@
                    <th>Lastname</th>
                    <th>Department</th>
                    <th>Position</th>
+                   <th>Manager</th>
                    <th>Start Date</th>
                    
                  
@@ -42,6 +43,11 @@
                    <td class="action">{{$users->lastName}}</td>
                    <td class="action">{{$users->departments->department}}</td>
                    <td class="action">{{$users->positions->position}}</td> 
+                   <td class="action">
+                    @if($users ->role  == 3)
+                      {{$users->firstName}}
+                    @endif
+                   </td>
                    <td class="action" >{{$users->startDate}}</td>  
                    <td class="action_hidden">
                     <a href="#"><i class="material-icons text-success">edite</i></a>

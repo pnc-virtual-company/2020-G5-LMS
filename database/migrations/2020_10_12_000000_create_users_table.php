@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('startDate')->date('Y-m-d H:i:s');
-            $table->string('profile');
+            $table->string('profile')->default("profile.png");
+            $table->integer('manager_id');
             $table->integer('position_id')->unsigned();
             $table->foreign('position_id')
                   ->references('id')
@@ -48,6 +49,7 @@ class CreateUsersTable extends Migration
                 'password'=>bcrypt('password'),
                 'startDate'=>'2020-07-10',
                 'profile'=>'profile.png',
+                'manager_id'=>3,
                 'position_id'=>1,
                 'department_id'=>1,
                 'remember_token' => Str::random(10)
