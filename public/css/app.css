@@ -85,6 +85,14 @@ hr {
   overflow: visible;
 }
 
+.glyphicon-hover .glyphicon{
+  visibility: hidden;
+}
+
+.glyphicon-hover td:hover .glyphicon{
+  visibility: visible;
+}
+
 h1,
 h2,
 h3,
@@ -10927,4 +10935,25 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+/* table style */
 
+table {
+  font-family: verdana;
+  font-size: 12px;
+  }
+
+  table tr:hover {
+  background: #EFEFEF;
+  } 
+  
+   table tr {
+  text-align: left;
+  }
+  
+  table td {
+  padding: 5px;
+  }
+  
+  table td a {
+  color: #0454B5;
+  } 
