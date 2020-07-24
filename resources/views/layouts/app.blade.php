@@ -124,6 +124,29 @@
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
+
+      $('#editEmployee').on('show.bs.modal', function (event) {
+          
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') 
+            var firstName = button.data('firstname')
+            var lastName = button.data('lastname')
+            var department_id = button.data('departmentid')
+            var position_id = button.data('positionid')
+            var startDate = button.data('startdate')
+            var profile = button.data('profile')
+            var route = "{{url('employee')}}/"+id
+            console.log("modal is shown...."+id)
+            var modal = $(this)
+            modal.find('#firstName').val(firstName)
+            modal.find('#lastName').val(lastName)
+            modal.find('#lastName').val(lastName)
+            modal.find('#deparment').val(department_id)
+            modal.find('#position').val(position_id)
+            modal.find('#startdate').val(startDate)
+            modal.find('#profile').val(profile)
+            modal.find('#modalEdit').attr("action",route)
+        });
     });
 
     </script>

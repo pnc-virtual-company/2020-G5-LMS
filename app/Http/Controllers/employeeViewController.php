@@ -62,10 +62,7 @@ class employeeViewController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        $departments = Department::all();
-        $positions = Position::all();
-        return view('showEmployee.edit',compact('user', 'departments', 'positions'));
+       //
     }
 
     /**
@@ -89,9 +86,16 @@ class employeeViewController extends Controller
             $filename = time(). ".".$extension;
             $file->move('img/', $filename);
             $user->profile = $filename;
+        }
+        if ($request->hasfile('editProfile')){
+            $file = $request->file('editProfile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
         $user->save();
-        return back();
-    }
+        return redirect()->back();
 }
 
 
@@ -106,4 +110,12 @@ class employeeViewController extends Controller
     {
         //
     }
+    public function deleteProfile($id)
+    {
+        $user = User::find($id);
+        $user->profile = "profile.png";
+        $user->save();
+        return redirect()->back();
+    }
+
 }

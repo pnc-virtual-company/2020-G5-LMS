@@ -29,3 +29,4 @@ Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave')
 Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 Route::resource('employee','employeeViewController');
+Route::get('/deleteProfile/{id}' , 'employeeViewController@deleteProfile')->name('deleteProfile');
