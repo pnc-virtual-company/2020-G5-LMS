@@ -21,7 +21,7 @@ class employeeViewController extends Controller
         $position = Position::all();
         return view('showEmployee.employeeView',['users' => $users,] ,compact('department','position'));
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -95,7 +95,7 @@ class employeeViewController extends Controller
             $user->profile = $filename;
         }
         $user->save();
-        return redirect()->back();
+        return back();
 }
 
 
@@ -115,7 +115,7 @@ class employeeViewController extends Controller
         $user = User::find($id);
         $user->profile = "profile.png";
         $user->save();
-        return redirect()->back();
+        return back();
     }
 
 }

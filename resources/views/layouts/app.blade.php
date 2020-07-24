@@ -22,7 +22,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+ 
     <style>
         a:focus{
             color: blue;
@@ -135,8 +135,9 @@
             var position_id = button.data('positionid')
             var startDate = button.data('startdate')
             var profile = button.data('profile')
+            var showprofile = "{{asset('img/')}}/" + profile
+            var deleteProfile = "{{url('deleteProfile')}}/"+ id
             var route = "{{url('employee')}}/"+id
-            console.log("modal is shown...."+id)
             var modal = $(this)
             modal.find('#firstName').val(firstName)
             modal.find('#lastName').val(lastName)
@@ -144,7 +145,8 @@
             modal.find('#deparment').val(department_id)
             modal.find('#position').val(position_id)
             modal.find('#startdate').val(startDate)
-            modal.find('#profile').val(profile)
+            modal.find('#showProfile').attr("src",showprofile)
+            modal.find('#deleteProfile').attr("href",deleteProfile)
             modal.find('#modalEdit').attr("action",route)
         });
     });
