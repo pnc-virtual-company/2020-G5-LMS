@@ -24,8 +24,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
  
     <style>
-        a:focus{
-            color: blue;
+        table.glyphicon-hover .glyphicon {
+            visibility: hidden;
+        }
+        table.glyphicon-hover td:hover .glyphicon {
+            visibility: visible;
         }
     </style>
 </head>
@@ -36,7 +39,7 @@
             <div class="container">
 
             <div class="menu">
-                <a class="navbar-brand" href="{{ route('showYourLeave') }}" onfocus="myFunction(this)">
+                <a class="navbar-brand" href="{{ route('home') }}" onfocus="myFunction(this)">
                     {{ __('Your leave') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('request.index') }}" onfocus="myFunction(this)">
@@ -77,15 +80,22 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModals"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('myModals').submit();">
+                                     {{ __('Profile') }}
+                                 </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
@@ -151,6 +161,5 @@
     });
 
     </script>
-
 </body>
 </html>

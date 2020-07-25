@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Department;
 use App\Position;
+use Laravel\Ui\Presets\React;
 
 class employeeViewController extends Controller
 {
@@ -29,7 +30,11 @@ class employeeViewController extends Controller
      */
     public function create()
     {
-        //
+        
+    }
+    function editEmployee(){
+       
+        return view('showEmployee.employeeView');
     }
 
     /**
@@ -40,9 +45,27 @@ class employeeViewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $user =  User::find(Auth::id());
+         $user =  new User;
+         $user->firstName = $request->get('first');
+         $user->lastName = $request->get('last');
+         $user->startDate = $request->get('date');
+         $user->email = $request->get('email');
+         $user->role = $request->get('role');
+         $user->password = bcrypt($request->get('new_password'));
+         $user->department_id = $request->get('depart');
+         $user->position_id = $request->get('position');
+         if($user->manager = $request->get('manager') != null){
+            $user->manager = $request->get('manager');
+         }else{
+             $user->manager = "  ";
+         }
+         $user->save();
+         return redirect('employee');
     }
-
+    // public function addEmployee(Request $request){
+       
+    // }
     /**
      * Display the specified resource.
      *
@@ -53,7 +76,7 @@ class employeeViewController extends Controller
     {
         //
     }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,6 +86,7 @@ class employeeViewController extends Controller
     public function edit($id)
     {
        //
+       
     }
 
     /**
@@ -108,7 +132,9 @@ class employeeViewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return back();
     }
     public function deleteProfile($id)
     {
@@ -119,3 +145,4 @@ class employeeViewController extends Controller
     }
 
 }
+
