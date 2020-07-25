@@ -39,7 +39,6 @@
       </table>
     </div> 
 </div>
-
 <!-- Modal edit employee -->
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -85,9 +84,7 @@
               </div>
               <div class="form-group">
                 <label for="picture" style="cursor: pointer"><i class="material-icons">add</i></label>
-                
                 <input type="file" id="picture" name="image" autocomplete="picture" style="display:none">
-                
                 <label for="editProfile" style="cursor: pointer"><i class="material-icons">edit</i></label>
                 <input type="file" id="editProfile" name="editProfile" autocomplete="editProfile" style="display:none">
                 <a style="color: black" id="deleteProfile" onclick="return confirm('Are you sure you want to delete this item')"><i class="material-icons">delete</i></a>
