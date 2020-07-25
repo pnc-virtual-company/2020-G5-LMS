@@ -31,6 +31,7 @@ Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('delet
 
 Route::get('/showPosition', 'PositionController@index')->name('showPosition');
 Route::post('addPosition', 'PositionController@addPosition')->name('addPosition');
+Route::get('existPosition', 'PositionController@existPosition')->name('existPosition');
 Route::patch('editPosition/{id}', 'PositionController@editPosition')->name('editPosition');
 Route::patch('deletePosition/{id}', 'PositionController@deletePosition')->name('deletePosition');
 Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');

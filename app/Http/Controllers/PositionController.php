@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Position;
 use App\User;
+use DB;
 class PositionController extends Controller
 {
     public function index(){
@@ -15,10 +16,28 @@ class PositionController extends Controller
     
     public function addPosition(Request $request)
     {
-            $positions = new Position;
-            $positions->position = $request->get('position');
-            $positions->save();
-            return redirect('showPosition');
+       
+        $positions = new Position;
+        $request -> validate([
+            'position' => 'required|unique:positions,position',
+        ]);
+        $positions->position = $request->get('position');
+        $positions->save();
+        return redirect('showPosition');
+    }
+
+    /**
+     * Get date to compair if it's already has in datebase
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function existPosition(Request $request) {
+        $position = $request->get('result');
+        if($request->ajax()){
+            $positionData = DB::table('positions')->where('position',$position)->get();
+            return $positionData;
+        }
     }
 
     public function editPosition(Request $request,$id)
