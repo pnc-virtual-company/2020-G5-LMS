@@ -21,8 +21,9 @@ class CreateUsersTable extends Migration
             $table->integer('role')->default(4); // 1 : admin 2 : HR 3: manager 4 : employee
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('manager')->default('no manager');
             $table->date('startDate')->date('Y-m-d H:i:s');
-            $table->string('profile');
+            $table->string('profile')->default();
             $table->integer('position_id')->unsigned();
             $table->foreign('position_id')
                   ->references('id')
@@ -46,6 +47,7 @@ class CreateUsersTable extends Migration
                 'email'=>'admin@gmail.com',
                 'role'=>1,
                 'password'=>bcrypt('password'),
+                'manager'=>'',
                 'startDate'=>'2020-07-10',
                 'profile'=>'profile.png',
                 'position_id'=>1,
