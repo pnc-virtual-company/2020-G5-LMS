@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use\App\Department;
 use Illuminate\Http\Request;
-use App\Department;
 
 class DepartmentController extends Controller
 {

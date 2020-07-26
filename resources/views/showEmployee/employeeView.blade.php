@@ -41,14 +41,10 @@
               <td class="action">{{$user->lastName}}</td>
               <td class="action">{{$user->department->department}}</td> 
               <td class="action">{{$user->position->position}}</td> 
-              <td class="action">{{$users->manager}}</td> 
+              <td class="action">{{$user->manager}}</td> 
               <td class="action">{{$user->startDate}}</td>
               <td class="action_hidden">
-                <a onclick="document.getElementById('{{'user_id'.$users->id}}').submit()" href="#"><i class="material-icons text-danger">delete</i></a>
-                    <form id="{{'user_id'.$users->id}}" action="{{route('employee.destroy',$users->id)}}" method="post">
-                      @csrf
-                      @method('delete')
-                    </form>
+                <a href="#"> <i class="material-icons">mode_delete</i></a></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
                   data-firstname={{$user->firstName}}
@@ -98,6 +94,17 @@
                   @endforeach
               </select>
               </div>
+              <div class="form-group">
+                <select name="manager" class="form-control">
+                  <option value="">Manager</option>
+                   @foreach ($users as $user)
+                     @if ($user->role == 2)
+                     <option value="{{$user->id}}">{{$user->firstName}}</option>
+                     <option value="{{$user->id}}" {{ ($user->id == $user->manager) ? 'selected' : '' }}>{{$user->firstName}}</option> 
+                     @endif  
+                   @endforeach
+                </select>
+             </div>
               <div class="form-group">
                 <input id="startdate" type="date" data-date="" data-date-format="DD MMMM YYYY" class="form-control" id="startDate" name="startDate">
               </div>
@@ -168,8 +175,8 @@
                <div class="form-group">
                 ​​<select name="depart" class="form-control" required>
                   <option value="">--Department--</option>
-                   @foreach ($depart as $departs)
-                   <option value="{{$departs->id}}">{{$departs->department}}</option>
+                   @foreach ($department as $departments)
+                   <option value="{{$departments->id}}">{{$departments->department}}</option>
                    @endforeach
               </select>
                </div>
@@ -183,9 +190,9 @@
                 <div class="form-group">
                    <select name="manager" class="form-control">
                      <option value="">--Manager--</option>
-                      @foreach ($user as $users)
-                        @if ($users->role == 3)
-                        <option value="{{$users->firstName}}">{{$users->firstName}}</option>
+                      @foreach ($users as $user)
+                        @if ($user->role == 2)
+                        <option value="{{$user->firstName}}">{{$user->firstName}}</option>
                         @endif  
                       @endforeach
                    </select>
@@ -233,7 +240,3 @@
   }
   
 </style>
-
-
-
- 
