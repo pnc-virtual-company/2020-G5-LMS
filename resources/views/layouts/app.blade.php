@@ -150,28 +150,48 @@
        
              <!-- Modal body -->
              <div class="modal-body">
-               <table class="table table-borderless">
-                 <tr>
-                     <th class="header-table">Firstname</th>
-                     <td>{{Auth::user()->firstName}}</td>
-                 </tr>
-                 <tr>
-                     <th class="header-table">Lastname</th>
-                     <td>{{Auth::user()->lastName}}</td>
-                 </tr>
-                   <tr>
-                     <th class="header-table">Department</th>
-                     <td>{{Auth::user()->department->department}}</td>
-                   </tr>
-                   <tr>
-                     <th class="header-table">Position</th>
-                     <td>{{Auth::user()->position->position}}</td>
-                   </tr>
-                   <tr>
-                     <th class="header-table">Startdate</th>
-                     <td>{{Auth::user()->startDate}}</td>
-                   </tr>
-              </table>
+                 <div class="row">
+                     <div class="col-8">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th class="header-table">Firstname</th>
+                                <td>{{Auth::user()->firstName}}</td>
+                            </tr>
+                            <tr>
+                                <th class="header-table">Lastname</th>
+                                <td>{{Auth::user()->lastName}}</td>
+                            </tr>
+                              <tr>
+                                <th class="header-table">Department</th>
+                                <td>{{Auth::user()->department->department}}</td>
+                              </tr>
+                              <tr>
+                                <th class="header-table">Position</th>
+                                <td>{{Auth::user()->position->position}}</td>
+                              </tr>
+                              <tr>
+                                <th class="header-table">Startdate</th>
+                                <td>{{Auth::user()->startDate}}</td>
+                              </tr>
+                         </table>
+                     </div>
+                     <div class="col-4">
+                            <div class="form-group">
+                                <img style=" width: 80px;height:80px" src="{{asset('img/'.Auth::user()->profile)}}">
+                            </div>
+                            <div class="form-group">
+                                <form id="addProfile" action="{{route('addProfile', Auth::user()->id)}}" enctype="multipart/form-data" method="post">
+                                    @csrf
+                                    @method('POST')
+                                        <label for="picture"><i class="material-icons">add</i></label>
+                                        <input type="file" id="picture" name="image" autocomplete="picture" style="display:none">
+                                        <label for="newPicture"><i class="material-icons">edit</i></label>
+                                        <input type="file" id="newPicture" name="newPicture" autocomplete="newPicture" style="display:none">
+                                        <a href="{{route('deleteProfile' , Auth::user()->id)}}" style="color: black"  onclick="return confirm('Are you sure you want to delete this item')"><i class="material-icons">delete</i></a>
+                                </form>
+                            </div>
+                    </div>
+                 </div>
              </div>
              <!-- Modal footer -->
              <div class="modal-footer">
