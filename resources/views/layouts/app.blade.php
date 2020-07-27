@@ -128,6 +128,28 @@
         });
       });
 
+    // Edit event
+      $('#editLeaves').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var id = button.data('id')
+          var startDate = button.data('startdate')
+          var endDate = button.data('enddate')
+          var duration = button.data('duration')
+          var type = button.data('type')
+          var comment = button.data('comment')
+          var route = "{{url('editLeaves')}}/"+id
+          var modal = $(this)
+
+          modal.find('#txtFromDate').val(startDate)
+          modal.find('#txtToDate').val(endDate)
+          modal.find('#demo').val(duration)
+          modal.find('#type').val(type)
+          modal.find('#comment').val(comment)
+
+          modal.find('#modalEditLeave').attr("action",route)
+      });
+
+
     });
  
     $(document).ready(function(){
