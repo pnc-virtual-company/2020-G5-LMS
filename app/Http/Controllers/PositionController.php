@@ -16,23 +16,16 @@ class PositionController extends Controller
     
     public function addPosition(Request $request)
     {
-       
-        $positions = new Position;
-        $request -> validate([
-            'position' => 'required|unique:positions,position',
-        ]);
-        $positions->position = $request->get('position');
-        $positions->save();
-        return redirect('showPosition');
+            $position = new Position;
+            $request -> validate([
+                'position' => 'required|unique:positions,position',
+            ]);
+            $position->position = $request->get('position');
+            $position->save();
+            return redirect('showPosition');
     }
 
-    /**
-     * Get date to compair if it's already has in datebase
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function existPosition(Request $request) {
+    public function existPosition(Request $request){
         $position = $request->get('result');
         if($request->ajax()){
             $positionData = DB::table('positions')->where('position',$position)->get();
@@ -49,7 +42,7 @@ class PositionController extends Controller
     }
 
     public function deletePosition($id)
-    {
+    { 
             $positions = Position::find($id);
             $positions->delete();
             return redirect('showPosition');

@@ -17,7 +17,7 @@
                   </div>
                   <div class="form-group">
                   ​​<select name="depart" class="form-control">
-                    <option value="">--Department--</option>
+                    <option selected disabled>--Department--</option>
                      @foreach ($depart as $departs)
                      <option value="{{$departs->id}}">{{$departs->department}}</option>
                      @endforeach
@@ -25,7 +25,7 @@
                   </div>
                   <div class="form-group">
                 ​​  <select name="position" class="form-control">
-                    <option value="">--Position--</option>
+                    <option selected disabled>--Position--</option>
                     @foreach ($position as $positions)
                     <option value="{{$positions->id}}">{{$positions->position}}</option>
                     @endforeach

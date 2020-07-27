@@ -15,9 +15,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    
+     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -129,6 +127,31 @@
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
+
+    });
+ 
+    $(document).ready(function(){
+        $(document).on('keyup','#position',function(){
+            var result = $(this).val();
+            message_exist(result);
+        });
+
+        message_exist();
+        function message_exist(result){
+            $.ajax({
+                url:"{{route('existPosition')}}",
+                method:"get",
+                data:{result:result},
+                dataType:'json',
+                success:function(message){
+                    if(message != ''){
+                        $('#message').html('This position already existed.');
+                    }else{
+                        $('#message').html('');
+                    }
+                }
+            });
+        }
     });
 
     </script>
