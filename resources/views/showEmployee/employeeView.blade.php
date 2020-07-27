@@ -36,7 +36,7 @@
               @endif
               
               <td class="action">{{$user->startDate}}</td>
-              <td class="">
+              <td class="action_hidden">
                 <a href="#"> <i class="material-icons">mode_delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
@@ -89,10 +89,11 @@
               </select>
               </div>
               <div class="form-group">
-                <select id="manager" name="manager" class="form-control">
+                <select id="manager" name="manager" class="form-control" >
+                  <option selected disabled value="">No manager</option>
                    @foreach ($users as $user)
                      @if ($user->role == 3)
-                     <option value="{{$user->id}}" {{ ($user->manager_id == $user->id) ? 'selected' : '<span>No manager</span>'}}>{{$user->firstName}}</option> 
+                     <option value="{{$user->id}}" {{ ($user->manager_id == $user->id) ? 'selected' : ''}}>{{$user->firstName}}</option> 
                      @endif
                     @endforeach
                 </select>
@@ -103,9 +104,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-
                 <img class="card-img-top mb-2" style="width: 80px;height:80px" class="mx-auto d-block" id="showProfile"/>
-              
               </div>
               <div class="form-group">
                 <label for="picture" style="cursor: pointer"><i class="material-icons">add</i></label>

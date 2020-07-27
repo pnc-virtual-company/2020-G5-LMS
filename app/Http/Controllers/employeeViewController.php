@@ -102,6 +102,7 @@ class employeeViewController extends Controller
         $user->department_id = $request->department;
         $user->position_id = $request->position;
         $user->startDate = $request->startDate;
+        $user->manager_id = $request->manager;
         if ($request->hasfile('image')){
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
