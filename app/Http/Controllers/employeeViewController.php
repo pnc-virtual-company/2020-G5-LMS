@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -7,7 +6,6 @@ use App\User;
 use App\Department;
 use App\Position;
 use Laravel\Ui\Presets\React;
-
 class employeeViewController extends Controller
 {
     /**
