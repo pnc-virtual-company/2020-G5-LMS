@@ -20,10 +20,7 @@ class employeeViewController extends Controller
         $users = User::all();
         $department = Department::all();
         $position = Position::all();
-        $categories = User::whereNull('manager_id')
-        ->with('childrenCategories')
-        ->get();
-        return view('showEmployee.employeeView',['users' => $users,] ,compact('department','position','categories'));
+        return view('showEmployee.employeeView',['users' => $users,] ,compact('department','position'));
     }
  
     /**
