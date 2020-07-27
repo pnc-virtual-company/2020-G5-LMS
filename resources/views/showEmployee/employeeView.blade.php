@@ -42,7 +42,7 @@
               <td class="action">{{$user->lastName}}</td>
               <td class="action">{{$user->department->department}}</td> 
               <td class="action">{{$user->position->position}}</td>
-              <td class="action">{{$user->referral}}</td>
+              <td class="action">{{$user->user->firstName}}</td>
               <td class="action">{{$user->startDate}}</td>
               <td class="action_hidden">
                 <a href="#"> <i class="material-icons">mode_delete</i></a></a>
