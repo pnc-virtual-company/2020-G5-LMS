@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-</head>
-<body>
-       
   <div class="container">
     <div class="col-12">
       <div class="row">
@@ -49,8 +36,8 @@
               @endif
               
               <td class="action">{{$user->startDate}}</td>
-              <td class="action_hidden">
-                <a href="#"> <i class="material-icons">mode_delete</i></a></a>
+              <td class="">
+                <a href="#"> <i class="material-icons">mode_delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
                   data-firstname={{$user->firstName}}
@@ -58,7 +45,8 @@
                   data-departmentid={{$user->department_id}} 
                   data-positionid={{$user->position_id}}
                   data-startdate={{$user->startDate}}
-                  data-profile={{$user->profile}}>
+                  data-profile={{$user->profile}}
+                  data-manager={{$user->manager_id}}>
                 <i class="material-icons">mode_edit</i></a>
               </td>
             </tr>
@@ -101,14 +89,12 @@
               </select>
               </div>
               <div class="form-group">
-                <select name="manager" class="form-control">
-                  <option value="">Manager</option>
+                <select id="manager" name="manager" class="form-control">
                    @foreach ($users as $user)
-                     @if ($user->role == 2)
-                     <option value="{{$user->id}}">{{$user->firstName}}</option>
-                     <option value="{{$user->id}}" {{ ($user->id == $user->manager) ? 'selected' : '' }}>{{$user->firstName}}</option> 
-                     @endif  
-                   @endforeach
+                     @if ($user->role == 3)
+                     <option value="{{$user->id}}" {{ ($user->manager_id == $user->id) ? 'selected' : '<span>No manager</span>'}}>{{$user->firstName}}</option> 
+                     @endif
+                    @endforeach
                 </select>
              </div>
               <div class="form-group">
@@ -131,8 +117,8 @@
             </div>
           </div>
           <div class="form-group">
-          <a href="#" data-dismiss="modal" style="margin-left:50%" class=" text-dark font-weight-bold">DISCARD</a>&nbsp;
-           <button type="submit" class="btn text-warning btn-link">UPDATE</button>
+          <a href="#" data-dismiss="modal" style="margin-left:45%" class=" text-dark font-weight-bold">DISCARD</a>&nbsp;
+           <button type="submit" class="btn text-warning btn-link font-weight-bold">UPDATE</button>
           <div>
         </form>
       </div>
@@ -197,8 +183,8 @@
                    <select name="manager" class="form-control">
                      <option value="">--Manager--</option>
                       @foreach ($users as $user)
-                        @if ($user->role == 2)
-                        <option value="{{$user->firstName}}">{{$user->firstName}}</option>
+                        @if ($user->role == 3)
+                        <option value="{{$user->id}}">{{$user->firstName}}</option>
                         @endif  
                       @endforeach
                    </select>
@@ -234,8 +220,6 @@
     </div>
   </div>
  </div>
-</body>
-</html>
 @endsection
 <style>
   .action_hidden{

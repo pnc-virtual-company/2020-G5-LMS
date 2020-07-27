@@ -142,6 +142,7 @@
             var lastName = button.data('lastname')
             var department_id = button.data('departmentid')
             var position_id = button.data('positionid')
+            var manager_id = button.data('manager')
             var startDate = button.data('startdate')
             var profile = button.data('profile')
             var showprofile = "{{asset('img/')}}/" + profile
@@ -153,6 +154,7 @@
             modal.find('#lastName').val(lastName)
             modal.find('#deparment').val(department_id)
             modal.find('#position').val(position_id)
+            modal.find('#manager').val(manager_id)
             modal.find('#startdate').val(startDate)
             modal.find('#showProfile').attr("src",showprofile)
             modal.find('#deleteProfile').attr("href",deleteProfile)
