@@ -33,6 +33,7 @@ Route::delete('/deleteDepartment/{id}', 'DepartmentController@destroy')->name('d
 Route::get('/showPosition', 'PositionController@index')->name('showPosition');
 Route::get('existPosition','PositionController@existPosition')->name('existPosition');
 Route::post('addPosition', 'PositionController@addPosition')->name('addPosition');
+Route::get('existPosition', 'PositionController@existPosition')->name('existPosition');
 Route::patch('editPosition/{id}', 'PositionController@editPosition')->name('editPosition');
 Route::patch('deletePosition/{id}', 'PositionController@deletePosition')->name('deletePosition');
 

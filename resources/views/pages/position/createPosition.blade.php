@@ -21,9 +21,8 @@
                     <button type="button" class="btn float-right" data-dismiss="modal">DISCARD</button>
                 </div>
             </div>
-        </form>
-        
         </div>
+    </form>
     </div>
     </div>
 </div>

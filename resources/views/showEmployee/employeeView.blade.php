@@ -35,6 +35,7 @@
                  
                 </tr>
               @foreach ($user as $users)
+            
               <tbody id="myTable">
                <tr >
                    <td class="action">{{$users->firstName}}</td>
@@ -43,19 +44,37 @@
                    <td class="action">{{$users->positions->position}}</td> 
                    <td class="action" >{{$users->startDate}}</td>  
                    <td class="action_hidden">
-                    <a onclick="document.getElementById('{{'user_id'.$users->id}}').submit()" href="#"><i class="material-icons text-danger">delete</i></a>
-                    
-                    <form id="{{'user_id'.$users->id}}" action="{{route('employee.destroy',$users->id)}}" method="post">
-                      @csrf
-                      @method('delete')
-                    </form>
+                    <a href="#"><i class="material-icons text-success">edite</i></a>
+                    <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$users->id}}"><i  class="material-icons text-danger">delete</i></a>
                    </td>
+                    
                  </tr>
               </tbody>
             @endforeach
          </table>
     </div>
 </div>
+<!-- Start model delete employee -->
+<div class="modal" id="deleteEmployee{{$users->id}}">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px; width: 350px; margin:0 auto;">
+      <!-- Modal body -->
+      <div class="modal-body">
+          <form action="{{route('employee.destroy',$users->id)}}" method="POST">
+              @csrf
+              @method('DELETE')
+            <div class="from-group">
+              <h2>Remove items ?</h2>
+              <p>Are you sure you want to remove the selected employee?</p>
+              <button type="submit" class="btn text-warning float-right">REMOVE</button>
+              <button type="button" class="btn float-right" data-dismiss="modal">DON'T REMOVE</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal delete employee -->
 </body>
 </html>
 @endsection
