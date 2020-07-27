@@ -134,8 +134,8 @@
               </div> 
           </div>
 
-                <button class="btn text-warning" style="float: right;">CREATE</button>
-                <button type="button" class="btn" data-dismiss="modal" style="float: right;">DISCARD</button>
+            <button class="btn text-warning" style="float: right;">CREATE</button>
+            <button type="button" class="btn" data-dismiss="modal" style="float: right;">DISCARD</button>
 
         </form>
         </div>
