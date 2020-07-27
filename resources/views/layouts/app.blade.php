@@ -90,8 +90,6 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -135,6 +133,32 @@
         });
       });
 
+<<<<<<< HEAD
+    });
+ 
+    $(document).ready(function(){
+        $(document).on('keyup','#position',function(){
+            var result = $(this).val();
+            message_exist(result);
+        });
+
+        message_exist();
+        function message_exist(result){
+            $.ajax({
+                url:"{{route('existPosition')}}",
+                method:"get",
+                data:{result:result},
+                dataType:'json',
+                success:function(message){
+                    if(message != ''){
+                        $('#message').html('This position already existed.');
+                    }else{
+                        $('#message').html('');
+                    }
+                }
+            });
+        }
+=======
       $('#editEmployee').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var id = button.data('id') 
@@ -160,6 +184,7 @@
             modal.find('#deleteProfile').attr("href",deleteProfile)
             modal.find('#modalEdit').attr("action",route)
         });
+>>>>>>> 21699e73c4b04c30517fcec2a5a451d3b6ea8618
     });
 
     </script>

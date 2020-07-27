@@ -56,6 +56,58 @@ class CreateUsersTable extends Migration
                 'remember_token' => Str::random(10)
             ),
          );
+
+        DB::table('users')->insert(
+            array(
+                'id'=>2,
+                'firstName'=>'Normal',
+                'lastName'=>'User',
+                'email'=>'normal@gmail.com',
+                'role'=>2,
+                'password'=>bcrypt('password'),
+                'startDate'=>'2020-07-10',
+                'profile'=>'profile.png',
+                'position_id'=>1,
+                'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> null,
+                'remember_token' => Str::random(10)
+            ),
+         );
+        DB::table('users')->insert(
+            array(
+                'id'=>3,
+                'firstName'=>'makara',
+                'lastName'=>'deu',
+                'email'=>'makara@gmail.com',
+                'role'=>3,
+                'password'=>bcrypt('password'),
+                'startDate'=>'2020-07-10',
+                'profile'=>'profile.png',
+                'position_id'=>1,
+                'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> null,
+                'remember_token' => Str::random(10)
+            ),
+         );
+        DB::table('users')->insert(
+            array(
+                'id'=>4,
+                'firstName'=>'seyha',
+                'lastName'=>'eng',
+                'email'=>'seyha@gmail.com',
+                'role'=>4,
+                'password'=>bcrypt('password'),
+                'startDate'=>'2020-07-10',
+                'profile'=>'profile.png',
+                'position_id'=>1,
+                'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> 3,
+                'remember_token' => Str::random(10)
+            ),
+         );
     }
 
     /**

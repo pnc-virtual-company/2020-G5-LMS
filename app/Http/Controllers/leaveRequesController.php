@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\LeaveRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class leaveRequesController extends Controller
 {
@@ -16,7 +17,8 @@ class leaveRequesController extends Controller
     {
         $leave = LeaveRequest::all();
         $user = User::all();
-        return view('showLeave.leaveRequest' ,compact('leave'));
+        $auth = Auth::user()->role;
+            return view('showLeave.leaveRequest' ,compact('leave','auth'));
     }
 
     /**
