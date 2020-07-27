@@ -46,4 +46,15 @@ class User extends Authenticatable
     public function position(){
         return $this->belongsTo(Position::class);
     }
+
+    public function manager_id()
+    {
+        return $this->hasOne(User::class, 'manager_id', 'id');
+    }
+
+    public function referral()
+    {
+      return $this->belongsTo(User::class,'id','manager_id');
+    }
+
 }

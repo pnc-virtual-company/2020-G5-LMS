@@ -31,6 +31,7 @@
           <th>Lastname</th>
           <th>Department</th>
           <th>Position</th>
+          <th>Manager</th>
           <th>Start Date</th>
           {{-- <th>Action</th> --}}
         </tr>
@@ -40,8 +41,8 @@
               <td class="action">{{$user->firstName}}</td>
               <td class="action">{{$user->lastName}}</td>
               <td class="action">{{$user->department->department}}</td> 
-              <td class="action">{{$user->position->position}}</td> 
-              <td class="action">{{$user->manager}}</td> 
+              <td class="action">{{$user->position->position}}</td>
+              <td class="action">{{$user->referral}}</td>
               <td class="action">{{$user->startDate}}</td>
               <td class="action_hidden">
                 <a href="#"> <i class="material-icons">mode_delete</i></a></a>
