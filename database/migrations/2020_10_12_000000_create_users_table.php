@@ -34,10 +34,6 @@ class CreateUsersTable extends Migration
                     ->on('departments')
                     ->onDelete('cascade');
             $table->integer('manager_id')->unsigned()->nullable();
-            $table->foreign('manager_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
