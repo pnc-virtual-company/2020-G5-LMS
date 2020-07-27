@@ -20,7 +20,7 @@
                 <thead>
                     <tr>
                     </tr>
-                </thead>
+                </thead> 
                 <br>
                 <tbody id="myTable">
                     @foreach ($departments as $department)

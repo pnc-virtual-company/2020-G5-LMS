@@ -10,7 +10,7 @@ class DepartmentController extends Controller
     public function index(){
         $departments = Department::all();
         return view('pages.department.showDepartment', compact('departments'));
-    }
+    } 
 
     public function addDepartment(Request $request){
         $departments = new Department;

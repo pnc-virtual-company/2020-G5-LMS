@@ -14,6 +14,7 @@
                 <h5></strong>Create Position<strong></h5>
                 <div class="form-group">
                     <input type="text" class="form-control" id="position" placeholder="Position name" name="position">
+                    <span id="message" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn text-warning float-right" data-toggle="modal" data-target="#myModal">CREATE</button>

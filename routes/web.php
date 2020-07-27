@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/addLeaves', 'HomeController@addLeavesRequest')->name('addLeaves');
+Route::patch('/editLeaves/{id}', 'HomeController@udateLeave')->name('editLeaves');
 
 Route::get('/showDepartment', 'DepartmentController@index')->name('showDepartment');
 Route::post('/addDepartment', 'DepartmentController@addDepartment')->name('addDepartment');
@@ -27,16 +29,19 @@ Route::get('/editDepartment/{id}', 'DepartmentController@edit')->name('editDepar
 Route::patch('/updateDepartment/{id}', 'DepartmentController@update')->name('updateDepartment');
 Route::delete('/deleteDepartment/{id}', 'DepartmentController@destroy')->name('deleteDepartment');
 
-Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('deleteEmployee');
 
 Route::get('/showPosition', 'PositionController@index')->name('showPosition');
+Route::get('existPosition','PositionController@existPosition')->name('existPosition');
 Route::post('addPosition', 'PositionController@addPosition')->name('addPosition');
 Route::patch('editPosition/{id}', 'PositionController@editPosition')->name('editPosition');
 Route::patch('deletePosition/{id}', 'PositionController@deletePosition')->name('deletePosition');
+
 Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
-Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
-Route::resource('/leave', 'leaveController');
+// Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
+// Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
+
 Route::resource('employee','employeeViewController');
 Route::resource('deleteEmployee', 'employeeViewController');
+Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('deleteEmployee');
