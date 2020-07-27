@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-
+use App\Department;
+use App\Position;
+use Laravel\Ui\Presets\React;
 class employeeViewController extends Controller
 {
     /**
@@ -15,10 +15,12 @@ class employeeViewController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('showEmployee.employeeView',compact('user'));
+        $users = User::all();
+        $department = Department::all();
+        $position = Position::all();
+        return view('showEmployee.employeeView',['users' => $users,] ,compact('department','position'));
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +28,11 @@ class employeeViewController extends Controller
      */
     public function create()
     {
-        //
+        
+    }
+    function editEmployee(){
+       
+        return view('showEmployee.employeeView');
     }
 
     /**
@@ -37,9 +43,27 @@ class employeeViewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $user =  User::find(Auth::id());
+         $user =  new User;
+         $user->firstName = $request->get('first');
+         $user->lastName = $request->get('last');
+         $user->startDate = $request->get('date');
+         $user->email = $request->get('email');
+         $user->role = $request->get('role');
+         $user->password = bcrypt($request->get('new_password'));
+         $user->department_id = $request->get('depart');
+         $user->position_id = $request->get('position');
+         if($user->manager = $request->get('manager') != null){
+            $user->manager = $request->get('manager');
+         }else{
+             $user->manager = "  ";
+         }
+         $user->save();
+         return redirect('employee');
     }
-
+    // public function addEmployee(Request $request){
+       
+    // }
     /**
      * Display the specified resource.
      *
@@ -50,7 +74,7 @@ class employeeViewController extends Controller
     {
         //
     }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +83,8 @@ class employeeViewController extends Controller
      */
     public function edit($id)
     {
-        //
+       //
+       
     }
 
     /**
@@ -71,8 +96,32 @@ class employeeViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $user = User::find($id);
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
+        $user->department_id = $request->department;
+        $user->position_id = $request->position;
+        $user->startDate = $request->startDate;
+        $user->manager_id = $request->manager;
+        if ($request->hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
+        if ($request->hasfile('editProfile')){
+            $file = $request->file('editProfile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
+        $user->save();
+        return back();
+}
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -86,4 +135,13 @@ class employeeViewController extends Controller
         $user->delete();
         return back();
     }
+    public function deleteProfile($id)
+    {
+        $user = User::find($id);
+        $user->profile = "profile.png";
+        $user->save();
+        return back();
+    }
+
 }
+

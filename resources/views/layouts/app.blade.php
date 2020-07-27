@@ -22,7 +22,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+ 
     <style>
         table.glyphicon-hover .glyphicon {
             visibility: hidden;
@@ -80,15 +80,22 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModals"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('myModals').submit();">
+                                     {{ __('Profile') }}
+                                 </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
@@ -128,33 +135,33 @@
         });
       });
 
-    });
- 
-    $(document).ready(function(){
-        $(document).on('keyup','#position',function(){
-            var result = $(this).val();
-            message_exist(result);
+      $('#editEmployee').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') 
+            var firstName = button.data('firstname')
+            var lastName = button.data('lastname')
+            var department_id = button.data('departmentid')
+            var position_id = button.data('positionid')
+            var manager_id = button.data('manager')
+            var startDate = button.data('startdate')
+            var profile = button.data('profile')
+            var showprofile = "{{asset('img/')}}/" + profile
+            var deleteProfile = "{{url('deleteProfile')}}/"+ id
+            var route = "{{url('employee')}}/"+id
+            var modal = $(this)
+            modal.find('#firstName').val(firstName)
+            modal.find('#lastName').val(lastName)
+            modal.find('#lastName').val(lastName)
+            modal.find('#deparment').val(department_id)
+            modal.find('#position').val(position_id)
+            modal.find('#manager').val(manager_id)
+            modal.find('#startdate').val(startDate)
+            modal.find('#showProfile').attr("src",showprofile)
+            modal.find('#deleteProfile').attr("href",deleteProfile)
+            modal.find('#modalEdit').attr("action",route)
         });
-
-        message_exist();
-        function message_exist(result){
-            $.ajax({
-                url:"{{route('existPosition')}}",
-                method:"get",
-                data:{result:result},
-                dataType:'json',
-                success:function(message){
-                    if(message != ''){
-                        $('#message').html('This position already existed.');
-                    }else{
-                        $('#message').html('');
-                    }
-                }
-            });
-        }
     });
 
     </script>
-
 </body>
 </html>

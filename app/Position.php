@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 class Position extends Model
 {
-    public function user(){
+    public function users(){
         return $this->hasMany(User::class);
     }
 }

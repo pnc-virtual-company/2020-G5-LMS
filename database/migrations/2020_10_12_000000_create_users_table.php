@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('startDate')->date('Y-m-d H:i:s');
-            $table->string('profile');
+            $table->string('profile')->default('profile.png');
             $table->integer('position_id')->unsigned();
             $table->foreign('position_id')
                   ->references('id')
@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
                     ->references('id')
                     ->on('departments')
                     ->onDelete('cascade');
+            $table->integer('manager_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -50,6 +51,8 @@ class CreateUsersTable extends Migration
                 'profile'=>'profile.png',
                 'position_id'=>1,
                 'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> null,
                 'remember_token' => Str::random(10)
             ),
          );

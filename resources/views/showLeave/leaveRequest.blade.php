@@ -2,7 +2,7 @@
 @section('content')
        <div class="container">
            <div class="col-12">
-            <table class="table table mt-5">
+            <table class="table table-borderless mt-5">
                 <thead>
                     <tr>
                         <th>Employee</th>

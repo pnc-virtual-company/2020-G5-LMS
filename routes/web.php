@@ -39,10 +39,11 @@ Route::patch('deletePosition/{id}', 'PositionController@deletePosition')->name('
 
 Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
-// Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
-// Route::resource('/leave', 'leaveController');
+Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
+Route::get('editEmployee', 'employeeViewController@editEmployee')->name('editEmployee');
+Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 
 Route::resource('employee','employeeViewController');
+Route::get('/deleteProfile/{id}' , 'employeeViewController@deleteProfile')->name('deleteProfile');
 Route::resource('deleteEmployee', 'employeeViewController');
-Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('deleteEmployee');

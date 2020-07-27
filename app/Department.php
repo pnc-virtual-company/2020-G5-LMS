@@ -3,15 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-
+use\App\User;
 class Department extends Model
 {
     protected $fillable = [
-        'department',
-    ];
-
-    public function user(){
+                 'department',
+             ];
+    public function users(){
         return $this->hasMany(User::class);
     }
 }
+
