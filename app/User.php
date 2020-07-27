@@ -47,8 +47,6 @@ class User extends Authenticatable
         return $this->belongsTo(Position::class);
     }
 
-
-    
     public function managers()
     {
         return $this->hasMany(User::class, 'manager_id');

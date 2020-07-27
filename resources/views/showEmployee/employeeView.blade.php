@@ -42,7 +42,12 @@
               <td class="action">{{$user->lastName}}</td>
               <td class="action">{{$user->department->department}}</td> 
               <td class="action">{{$user->position->position}}</td>
-              <td class="action">{{$user->user->firstName}}</td>
+              @if ($user->manager_id == null)
+                <td class="action">No manager</td>
+              @else
+                <td class="action">{{$user->user->firstName}}</td>
+              @endif
+              
               <td class="action">{{$user->startDate}}</td>
               <td class="action_hidden">
                 <a href="#"> <i class="material-icons">mode_delete</i></a></a>
