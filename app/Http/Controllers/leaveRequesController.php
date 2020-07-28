@@ -16,9 +16,12 @@ class leaveRequesController extends Controller
     public function index()
     {
         $leave = LeaveRequest::all();
-        $user = User::all();
-        $auth = Auth::user()->role;
-            return view('showLeave.leaveRequest' ,compact('leave','auth'));
+        $user = User::all(); // select all users
+        $log = Auth::user()->id; // get the user id of login 
+        // dd($log);
+        $auth = Auth::user()->role; //get the role of user login
+        // dd($auth);
+            return view('showLeave.leaveRequest' ,compact('leave','auth','log'));
     }
 
     /**
