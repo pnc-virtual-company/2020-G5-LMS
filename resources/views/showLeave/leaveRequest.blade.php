@@ -24,17 +24,20 @@
                             <td>{{$leaves->endDate}}</td>
                             <td>{{$leaves->duration}}</td>
                             <td>{{$leaves->types}}</td>
+                            @if ($leaves->status == 1)
                             <td>
-                                <a id="accected" data-id="{{$leaves->id}}" href="{{route('accepted', $leaves->id)}}" class="btn btn-primary">Accept</a>
-                                <a id="rejected" data-id="{{$leaves->id}}" href="{{route('rejected', $leaves->id)}}" class="btn btn-white" style="border: 1px solid">Reject</a>
+                                <a href="{{route('accepted', $leaves->id)}}" class="btn btn-primary">Accept</a>
+                                <a href="{{route('rejected', $leaves->id)}}" class="btn btn-white" style="border: 1px solid">Reject</a>
                             </td>
+                            @else
+                                @if ($leaves->status == 4)
+                                    <td>Accepted</td>
+                                @endif
+                                @if ($leaves->status == 3)
+                                    <td>Rejected</td>
+                                @endif
+                            @endif
                            </tr>
-                           <script>
-                               document.getElementById('accected').addEventListener("click", test);
-                                function test(){
-                                    console.log("hello");
-                                }
-                           </script>
                        @endforeach
                        @else
                        @foreach ($leave as $leaves)
@@ -46,10 +49,19 @@
                         <td>{{$leaves->endDate}}</td>
                         <td>{{$leaves->duration}}</td>
                         <td>{{$leaves->types}}</td>
-                        <td>
-                            <a id="accected" data-id="{{$leaves->id}}"  href="{{route('accepted', $leaves->id)}}" class="btn btn-primary">Accept</a>
-                            <a id="rejected" data-id="{{$leaves->id}}" href="{{route('rejected', $leaves->id)}}" class="btn btn-white" style="border: 1px solid">Reject</a>
-                        </td>
+                        @if ($leaves->status == 1)
+                            <td>
+                                <a href="{{route('accepted', $leaves->id)}}" class="btn btn-primary">Accept</a>
+                                <a href="{{route('rejected', $leaves->id)}}" class="btn btn-white" style="border: 1px solid">Reject</a>
+                            </td>
+                            @else
+                                @if ($leaves->status == 4)
+                                    <td>Accepted</td>
+                                @endif
+                                @if ($leaves->status == 3)
+                                    <td>Rejected</td>
+                                @endif
+                            @endif
                        </tr>
                        @endif
                        @endforeach
