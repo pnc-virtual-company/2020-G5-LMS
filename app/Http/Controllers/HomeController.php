@@ -56,4 +56,10 @@ class HomeController extends Controller
 
     }
 
+    public function destroy($id){
+        $leavesRequest = Leave::find($id);
+        $leavesRequest->delete();
+        return redirect('/home');
+    }
+
 }
