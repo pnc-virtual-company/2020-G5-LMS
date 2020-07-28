@@ -47,3 +47,5 @@ Route::resource('request','leaveRequesController');
 Route::resource('employee','employeeViewController');
 Route::get('/deleteProfile/{id}' , 'employeeViewController@deleteProfile')->name('deleteProfile');
 Route::resource('deleteEmployee', 'employeeViewController');
+Route::get('/accepted/{id}', 'leaveRequesController@accepted')->name('accepted');
+Route::get('/rejected/{id}', 'leaveRequesController@rejected')->name('rejected');

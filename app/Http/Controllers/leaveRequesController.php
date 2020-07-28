@@ -18,9 +18,7 @@ class leaveRequesController extends Controller
         $leave = LeaveRequest::all();
         $user = User::all(); // select all users
         $log = Auth::user()->id; // get the user id of login 
-        // dd($log);
         $auth = Auth::user()->role; //get the role of user login
-        // dd($auth);
             return view('showLeave.leaveRequest' ,compact('leave','auth','log'));
     }
 
@@ -89,4 +87,20 @@ class leaveRequesController extends Controller
     {
         //
     }
+    public function accepted($id)
+    {
+       $leaveRequest = LeaveRequest::find($id);
+       $leaveRequest->status = 4;
+       $leaveRequest->save();
+       return back();
+    }
+
+    public function rejected($id)
+    {
+       $leaveRequest = LeaveRequest::find($id);
+       $leaveRequest->status = 3;
+       $leaveRequest->save();
+       return back();
+    }
+
 }
