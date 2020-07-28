@@ -48,7 +48,10 @@
                         </td>
                         
                         <td>
-                            <a href="#"><i class="material-icons text-danger">delete</i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteLeaves"
+                            data-id={{$leave->id}}
+                            ><i class="material-icons text-danger">delete</i></a>
+
                             <a href="#" 
                             data-toggle="modal" data-target="#editLeaves"
                             data-id={{$leave->id}}
@@ -144,79 +147,9 @@
   </div>
   <!-- End The Modal add leave request-->
 
-  <!-- The Modal edit leave request-->
-  <div class="modal" id="editLeaves">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius: 20px; width: 600px; margin:0 auto;">
-      
-        <!-- Modal body -->
-        <div class="modal-body">
-          <h4>Update a request</h4>
-          <br>
-          <form method="POST" id="modalEditLeave">
-            @csrf
-            @method('PATCH')
-          <div class="row">
-              <div class="col-7">
+@include('pages.yourLeave.updateLeaves')
+@include('pages.yourLeave.deleteLeave')
 
-                <div class="form-group">
-                  <input type="date" placeholder="Strat date" class="form-control" id="txtFromDate" name="startDate">
-                </div>
-
-                <div class="form-group">
-                  <input type="date" placeholder="End date" class="form-control" id="txtToDate" onchange="dateDiff();" name="endDate">
-                </div>
-
-                <div class="form-group">
-                  <p><strong>Duration: </strong><input type="text" id="demo" name="duration" value="" style="border: none; background-color: white;"></p>
-                </div>
-
-                <div class="form-group" class="form-control">
-                  <select name="type" class="form-control" id="type">
-                      <option selected disabled>Leave type</option>
-                      <option value="paid">Paid</option>
-                      <option value="sick">Sick</option>
-                      <option value="unpaid">Un paid</option>
-                      <option value="wedding">Wedding</option>
-                      <option value="maternity">Maternity</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <textarea name="comment" cols="42" rows="3" placeholder="Comment" id="comment"></textarea>
-                </div>
-
-              </div>
-
-              <div class="col-5">
-
-                <div class="form-group" onchange="dateDiff();">
-                  <select name="start" id="start" class="form-control">
-                      <option value="1" >MORNING</option>
-                      <option value="2">AFTERNOON</option>
-                  </select>
-                </div>
-
-                <div class="form-group" onchange="dateDiff();">
-                  <select name="end" id="end" class="form-control">
-                      <option value="1">MORNING</option>
-                      <option value="2">AFTERNOON</option>
-                  </select>
-                </div>
-
-              </div> 
-          </div>
-
-            <button class="btn text-warning" style="float: right;">UPDATE</button>
-            <button type="button" class="btn" data-dismiss="modal" style="float: right;">DISCARD</button>
-
-        </form>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  <!-- End The Modal edit leave request-->
   
 @endsection
 <style>
@@ -263,6 +196,47 @@ if(dtFrom > dtTo){
 }else{
   document.getElementById("demo").value = (days + period)+" days";
   $('#danger').html('');
+}
+  return false;
+}
+function isNumeric(val) {
+  var ret = parseInt(val);
+}
+
+  function dateDiffEdit() { 
+  var dtFrom = document.getElementById('editTxtFromDate').value;
+  var dtTo = document.getElementById('TeditxtToDate').value;
+  var startPeriod = document.getElementById('EditStart').value;
+  var endPeriod = document.getElementById('editEnd').value;
+  
+  var dt1 = new Date(dtFrom);
+  var dt2 = new Date(dtTo);
+  var diff = dt2.getTime() - dt1.getTime();
+  var days = diff/(1000 * 60 * 60 * 24);
+  var period = 0;
+
+if(startPeriod == 1) {
+  if(endPeriod == 1){
+    period = 0.5;
+  }else{
+    period = 1;
+  }  
+}else {
+  if(endPeriod == 1){  
+    period = 0;
+  }else{
+    period = 0.5;
+  }
+}
+
+
+if(dtFrom > dtTo){
+  $('#editDanger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
+}else if(dtFrom == dtTo && startPeriod == 2 && endPeriod == 1){
+  $('#editDanger').html('<div class="alert alert-danger"><strong>Error! </strong>Start date and end date cannot be selected in the past.</div>');
+}else{
+  document.getElementById("editDemo").value = (days + period)+" days";
+  $('#editDanger').html('');
 }
   return false;
 }

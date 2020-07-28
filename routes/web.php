@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/addLeaves', 'HomeController@addLeavesRequest')->name('addLeaves');
 Route::patch('/editLeaves/{id}', 'HomeController@udateLeave')->name('editLeaves');
+Route::delete('/deleteLeaves/{id}', 'HomeController@destroy')->name('deleteLeaves');
 
 Route::get('/showDepartment', 'DepartmentController@index')->name('showDepartment');
 Route::post('/addDepartment', 'DepartmentController@addDepartment')->name('addDepartment');
