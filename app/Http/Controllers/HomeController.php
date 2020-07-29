@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LeaveRequest;
-
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -53,7 +53,34 @@ class HomeController extends Controller
         $leavesRequest->user_id = $user;
         $leavesRequest->save();
         return redirect('/home');
-
     }
 
-}
+    public function addProfile(Request $request, $id)
+    {
+        $user = User::find($id);
+        if ($request->hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
+        if ($request->hasfile('newPicture')){
+            $file = $request->file('newPicture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
+        $user->save();
+        return back();
+    }
+    public function deleteProfile($id)
+    {
+        $user = User::find($id);
+        $user->profile = "profile.png";
+        $user->save();
+        return back();
+    }
+    }
+

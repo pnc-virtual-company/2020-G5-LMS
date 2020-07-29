@@ -49896,6 +49896,10 @@ module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\re
 
 /******/ });
 
+ $(document).ready(function(){
+//   //  mouse hover on table
+//   var trIndex = null;
+//   $("#btn tr td").mouseenter(function() {
 //   trIndex = $(this).parent();
 //   $(trIndex).find("td:last-child").html('<a href="#"><i class="material-icons" style="color:red;">mode_delete</i></a>&nbsp;&nbsp;<a href="#"><i class="material-icons">mode_edit</i></a>');
 //   });
@@ -49904,3 +49908,12 @@ module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\re
 //   $(trIndex).find('td:last-child').html("&nbsp;");
 //   });
 // });
+// Edit profile user login 
+$('#picture').change(function(){
+    $('#addProfile').submit();
+});
+$('#newPicture').change(function(){
+    $('#addProfile').submit();
+});
+
+ });
