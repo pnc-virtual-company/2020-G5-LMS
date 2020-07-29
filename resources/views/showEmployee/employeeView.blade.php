@@ -40,7 +40,7 @@
               
               <td class="action">{{$user->startDate}}</td>
               <td class="action_hidden">
-                <a href="#"> <i class="material-icons">mode_delete</i></a>
+                <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$user->id}}"><i  class="material-icons text-danger">delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
                   data-firstname={{$user->firstName}}
@@ -58,6 +58,28 @@
       </table>
     </div> 
 </div>
+<!-- Start model delete employee -->
+<div class="modal" id="deleteEmployee{{$user->id}}">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px; width: 350px; margin:0 auto;">
+      <!-- Modal body -->
+      <div class="modal-body">
+          <form action="{{route('employee.destroy',$user->id)}}" method="POST">
+              @csrf
+              @method('DELETE')
+            <div class="from-group">
+              <h2>Remove items ?</h2>
+              <p>Are you sure you want to remove the selected employee?</p>
+              <button type="submit" class="btn text-warning float-right">REMOVE</button>
+              <button type="button" class="btn float-right" data-dismiss="modal">DON'T REMOVE</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal delete employee -->
+
 <!-- Modal edit employee -->
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
