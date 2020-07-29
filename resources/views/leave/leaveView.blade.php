@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -23,20 +22,16 @@
                 <a href="" class="" ><button class="btn btn-warning float-right text-white">Request a leave</button></a>
               </div>
           </div>
-          
         <br>
-        
-            <table class="table table-borderless table-hover" id="myTable">
-                <thead>
-                    <tr>
-                        <th>Start date</th>
-                        <th>End date</th>
-                        <th>Duration</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                </thead>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Start date</th>
+                    <th>End date</th>
+                    <th>Duration</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+
                 @foreach ($leaves as $leave)
                 <tbody id="btn">
                     <tr>
@@ -56,10 +51,13 @@
                             @elseif($leave -> status == 3)
                             <a href=""><button class="bnt btn-danger">Rejected</button></a>
 
-                            @elseif($leave -> status == 4)
-                            <a href=""><button class="bnt btn-success">Accepted</button></a>
-                            @endif
-
+                        @if($leave -> status == 2  )
+                        <a href=""><button class="bnt btn-danger">Cancelled</button></a>
+                        @endif  
+                        @if($leave -> status == 3 )
+                        <a href=""><button class="bnt btn-success">Rejected</button></a>
+                        
+                        @endif
 
                         </td>
                       

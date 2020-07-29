@@ -7,28 +7,29 @@
         <div class="col-2"></div>
         <div class="col-4"><h1>Position</h1></div>
         <div class="col-4">
-            <a href="#" class="btn btn-warning float-right text-white btn-lg" style="border-radius: 25px; "><strong>+ Create</strong></a>
+            @include('pages.position.createPosition')
         </div>
         <div class="col-2"></div>
     </div>
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <table class="table table-borderless table-hover">
+            <table id="myTable" class="table table-borderless glyphicon-hover table-hover">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
+                <br>
                 @foreach ($positions as $position)
                 <tbody>
                     <tr>
-                    <td>{{$position->position}}</td>
-                        <td class="float-right" >
-                            <a href="#"><span class="material-icons text-secondary">edit</span></a>
-                            <a href="#"><span class="material-icons text-secondary">delete</span></a>
-                        </td>
+                    <td>
+                        <div class="container">
+                            {{$position->position}}
+                            @include('pages.position.deletePosition')
+                            @include('pages.position.editPosition') 
+                        </div>   
+                     </td>
                     </tr>
                 </tbody>
                 @endforeach

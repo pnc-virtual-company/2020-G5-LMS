@@ -49888,8 +49888,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\leaveManagementSystem\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\leaveManagementSystem\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
@@ -49915,3 +49915,18 @@ $("#btn tr td").mouseleave(function() {
    $(trIndex).find('td:last-child').html("&nbsp;");
  });
 }); 
+ $(document).ready(function(){
+//   //  mouse hover on table
+//   var trIndex = null;
+//   $("#btn tr td").mouseenter(function() {
+//   trIndex = $(this).parent();
+//   $(trIndex).find("td:last-child").html('<a href="#"><i class="material-icons" style="color:red;">mode_delete</i></a>&nbsp;&nbsp;<a href="#"><i class="material-icons">mode_edit</i></a>');
+//   });
+//   // remove button on tr mouseleave
+//   $("#btn tr td").mouseleave(function() {
+//   $(trIndex).find('td:last-child').html("&nbsp;");
+//   });
+// });
+// Edit profile user login 
+
+ });
