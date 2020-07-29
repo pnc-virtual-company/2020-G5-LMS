@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LeaveRequest;
+
 class HomeController extends Controller
 {
     /**
@@ -28,7 +29,7 @@ class HomeController extends Controller
  
     public function addLeavesRequest(Request $request){
         $user = Auth::user()->id;
-        $leavesRequest = new Leave;
+        $leavesRequest = new LeaveRequest;
         $leavesRequest->startDate = $request->startDate;
         $leavesRequest->endDate = $request->endDate;
         $leavesRequest->duration = $request->duration;
@@ -43,7 +44,7 @@ class HomeController extends Controller
 
     public function udateLeave(Request $request, $id){
         $user = Auth::user()->id;
-        $leavesRequest = Leave::find($id);
+        $leavesRequest = LeaveRequest::find($id);
         $leavesRequest->startDate = $request->startDate;
         $leavesRequest->endDate = $request->endDate;
         $leavesRequest->duration = $request->duration;
