@@ -49896,7 +49896,7 @@ module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\re
 
 /******/ });
 
-// $(document).ready(function(){
+ $(document).ready(function(){
 //   //  mouse hover on table
 //   var trIndex = null;
 //   $("#btn tr td").mouseenter(function() {
@@ -49908,3 +49908,6 @@ module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\re
 //   $(trIndex).find('td:last-child').html("&nbsp;");
 //   });
 // });
+// Edit profile user login 
+
+ });

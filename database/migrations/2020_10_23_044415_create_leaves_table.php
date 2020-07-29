@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLeaveRequestsTable extends Migration
+class CreateLeavesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateLeaveRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('leave_requests', function (Blueprint $table) {
+        Schema::create('leaves', function (Blueprint $table) {
             $table->increments('id');
             $table->date('startDate')->date('Y-m-d H:i:s');
             $table->date('endDate')->date('Y-m-d H:i:s');
             $table->string('duration');
+            $table->string('comment')->default('OFF');
             $table->string('types');
-            $table->integer('status');
+            $table->integer('status')->default(1);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                   ->references('id')
@@ -27,15 +28,13 @@ class CreateLeaveRequestsTable extends Migration
                   ->onDelete('cascade');
             $table->timestamps();
         });
-
-        // Insert the default leave request
-
-        DB::table('leave_requests')->insert(
+        DB::table('leaves')->insert(
             array(
                 'id'=>1,
                 'startDate'=>'2020-07-10',
                 'endDate'=>'2020-07-11',
                 'duration'=> '1 day',
+                'comment' => 'this is the comment',
                 'types'=>'training',
                 'status'=> 1, // 1 : Requested 2: Cancelled 3 : Accepted 
                 'user_id'=>1
@@ -50,6 +49,6 @@ class CreateLeaveRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_requests');
+        Schema::dropIfExists('leaves');
     }
 }

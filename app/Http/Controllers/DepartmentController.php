@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use\App\Department;
 use Illuminate\Http\Request;
-use App\Department;
 
 class DepartmentController extends Controller
 {
     public function index(){
         $departments = Department::all();
         return view('pages.department.showDepartment', compact('departments'));
-    }
+    } 
 
     public function addDepartment(Request $request){
         $departments = new Department;
@@ -36,5 +35,10 @@ class DepartmentController extends Controller
        $item = Department::find($id);
        $item ->delete();
        return redirect('/showDepartment');
+    }
+
+    public function showDepartment(){
+        $departments = Department::all();
+        return view('showEmployee.employeeView',compact('departments'));
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Leave;
+use App\LeaveRequest;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -22,14 +23,73 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $leaves = Leave::all();
+        $leaves = LeaveRequest::all();
         return view('home',compact('leaves'));
     }
-    
-    public function destroy($id)
-    {
-        $leaves = Leave::find($id);
-        $leaves ->delete();
-       return redirect('/home');
+ 
+    public function addLeavesRequest(Request $request){
+        $user = Auth::user()->id;
+        $leavesRequest = new LeaveRequest;
+        $leavesRequest->startDate = $request->startDate;
+        $leavesRequest->endDate = $request->endDate;
+        $leavesRequest->duration = $request->duration;
+        if($request->comment != ''){
+            $leavesRequest->comment = $request->comment;
+        }
+        $leavesRequest->types = $request->type;
+        $leavesRequest->user_id = $user;
+        $leavesRequest->save();
+        return redirect('/home');
     }
-}
+
+    public function udateLeave(Request $request, $id){
+        $user = Auth::user()->id;
+        $leavesRequest = LeaveRequest::find($id);
+        $leavesRequest->startDate = $request->startDate;
+        $leavesRequest->endDate = $request->endDate;
+        $leavesRequest->duration = $request->duration;
+        $leavesRequest->comment = $request->comment;
+        $leavesRequest->types = $request->type;
+        $leavesRequest->user_id = $user;
+        $leavesRequest->save();
+        return redirect('/home');
+    }
+
+    public function addProfile(Request $request, $id)
+    {
+        $user = User::find($id);
+        if ($request->hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
+        if ($request->hasfile('newPicture')){
+            $file = $request->file('newPicture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('img/', $filename);
+            $user->profile = $filename;
+        }
+        $user->save();
+        return back();
+    }
+        public function deleteProfile($id)
+        {
+            $user = User::find($id);
+            $user->profile = "profile.png";
+            $user->save();
+            return back();
+        }
+
+        public function destroy($id){
+            $leavesRequest = Leave::find($id);
+            $leavesRequest->delete();
+            return redirect('/home');
+        }
+    }
+
+    
+
+
