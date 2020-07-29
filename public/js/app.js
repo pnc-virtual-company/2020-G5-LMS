@@ -49909,11 +49909,5 @@ module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\re
 //   });
 // });
 // Edit profile user login 
-$('#picture').change(function(){
-    $('#addProfile').submit();
-});
-$('#newPicture').change(function(){
-    $('#addProfile').submit();
-});
 
  });

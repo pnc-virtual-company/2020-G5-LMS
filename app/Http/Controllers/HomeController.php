@@ -75,19 +75,19 @@ class HomeController extends Controller
         $user->save();
         return back();
     }
-    public function deleteProfile($id)
-    {
-        $user = User::find($id);
-        $user->profile = "profile.png";
-        $user->save();
-        return back();
-    }
+        public function deleteProfile($id)
+        {
+            $user = User::find($id);
+            $user->profile = "profile.png";
+            $user->save();
+            return back();
+        }
 
-    public function destroy($id){
-        $leavesRequest = Leave::find($id);
-        $leavesRequest->delete();
-        return redirect('/home');
-    }
+        public function destroy($id){
+            $leavesRequest = Leave::find($id);
+            $leavesRequest->delete();
+            return redirect('/home');
+        }
     }
 
     

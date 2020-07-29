@@ -269,8 +269,8 @@
                                 <form id="addProfile" action="{{route('addProfile', Auth::user()->id)}}" enctype="multipart/form-data" method="post">
                                     @csrf
                                     @method('POST')
-                                        <label for="picture"><i class="material-icons">add</i></label>
-                                        <input type="file" id="picture" name="image" autocomplete="picture" style="display:none">
+                                        <label for="addPicture"><i class="material-icons">add</i></label>
+                                        <input type="file" id="addPicture" name="image" autocomplete="addPicture" style="display:none">
                                         <label for="newPicture"><i class="material-icons">edit</i></label>
                                         <input type="file" id="newPicture" name="newPicture" autocomplete="newPicture" style="display:none">
                                         <a href="{{route('deleteProfile' , Auth::user()->id)}}" style="color: black"  onclick="return confirm('Are you sure you want to delete this item')"><i class="material-icons">delete</i></a>
@@ -289,3 +289,11 @@
    </div>
 </body>
 </html>
+<script>
+    $('#addPicture').change(function(){
+        $('#addProfile').submit();
+    });
+    $('#newPicture').change(function(){
+        $('#addProfile').submit();
+    });
+</script>
