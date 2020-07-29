@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/addLeaves', 'HomeController@addLeavesRequest')->name('addLeaves');
 Route::patch('/editLeaves/{id}', 'HomeController@udateLeave')->name('editLeaves');
+Route::delete('/deleteLeaves/{id}', 'HomeController@destroy')->name('deleteLeaves');
 
 Route::get('/showDepartment', 'DepartmentController@index')->name('showDepartment');
 Route::post('/addDepartment', 'DepartmentController@addDepartment')->name('addDepartment');
@@ -42,6 +43,9 @@ Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
 Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
 Route::get('editEmployee', 'employeeViewController@editEmployee')->name('editEmployee');
+// Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
+// Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
+// Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
 // Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 

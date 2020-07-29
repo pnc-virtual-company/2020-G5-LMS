@@ -133,6 +133,36 @@
         });
       });
 
+    // Edit event
+      $('#editLeaves').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var id = button.data('id')
+          var startDate = button.data('startdate')
+          var endDate = button.data('enddate')
+          var duration = button.data('duration')
+          var type = button.data('type')
+          var comment = button.data('comment')
+          var route = "{{url('editLeaves')}}/"+id
+          var modal = $(this) 
+
+          modal.find('#editTxtFromDate').val(startDate)
+          modal.find('#TeditxtToDate').val(endDate)
+          modal.find('#editDemo').val(duration)
+          modal.find('#editType').val(type)
+          modal.find('#editComment').val(comment)
+
+          modal.find('#modalEditLeave').attr("action",route)
+      });
+    // delete event
+      $('#deleteLeaves').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var id = button.data('id')
+          var route = "{{url('deleteLeaves')}}/"+id
+          var modal = $(this) 
+          modal.find('#modelDeleteLeave').attr("action",route)
+      });
+
+
     });
  
     $(document).ready(function(){

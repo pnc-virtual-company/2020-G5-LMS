@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="container mt-5">
+    <div class="container">
       <div class="col-12">
           <div class="row">
               <div class="col-6">
@@ -23,7 +22,7 @@
                         <th>Duration</th>
                         <th>Type</th>
                         <th>Status</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 @foreach ($leaves as $leave)
@@ -49,7 +48,10 @@
                         </td>
                         
                         <td>
-                            <a href="#"><i class="material-icons text-danger">delete</i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteLeaves"
+                            data-id={{$leave->id}}
+                            ><i class="material-icons text-danger">delete</i></a>
+
                             <a href="#" 
                             data-toggle="modal" data-target="#editLeaves"
                             data-id={{$leave->id}}
@@ -144,6 +146,10 @@
     </div>
   </div>
   <!-- End The Modal add leave request-->
+
+@include('pages.yourLeave.updateLeaves')
+@include('pages.yourLeave.deleteLeave')
+
   
 @endsection
 <style>
@@ -190,6 +196,47 @@ if(dtFrom > dtTo){
 }else{
   document.getElementById("demo").value = (days + period)+" days";
   $('#danger').html('');
+}
+  return false;
+}
+function isNumeric(val) {
+  var ret = parseInt(val);
+}
+
+  function dateDiffEdit() { 
+  var dtFrom = document.getElementById('editTxtFromDate').value;
+  var dtTo = document.getElementById('TeditxtToDate').value;
+  var startPeriod = document.getElementById('EditStart').value;
+  var endPeriod = document.getElementById('editEnd').value;
+  
+  var dt1 = new Date(dtFrom);
+  var dt2 = new Date(dtTo);
+  var diff = dt2.getTime() - dt1.getTime();
+  var days = diff/(1000 * 60 * 60 * 24);
+  var period = 0;
+
+if(startPeriod == 1) {
+  if(endPeriod == 1){
+    period = 0.5;
+  }else{
+    period = 1;
+  }  
+}else {
+  if(endPeriod == 1){  
+    period = 0;
+  }else{
+    period = 0.5;
+  }
+}
+
+
+if(dtFrom > dtTo){
+  $('#editDanger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
+}else if(dtFrom == dtTo && startPeriod == 2 && endPeriod == 1){
+  $('#editDanger').html('<div class="alert alert-danger"><strong>Error! </strong>Start date and end date cannot be selected in the past.</div>');
+}else{
+  document.getElementById("editDemo").value = (days + period)+" days";
+  $('#editDanger').html('');
 }
   return false;
 }
