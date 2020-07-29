@@ -30,6 +30,8 @@ Route::get('/editDepartment/{id}', 'DepartmentController@edit')->name('editDepar
 Route::patch('/updateDepartment/{id}', 'DepartmentController@update')->name('updateDepartment');
 Route::delete('/deleteDepartment/{id}', 'DepartmentController@destroy')->name('deleteDepartment');
 
+//Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('deleteEmployee');
+
 Route::get('/showPosition', 'PositionController@index')->name('showPosition');
 Route::get('existPosition','PositionController@existPosition')->name('existPosition');
 Route::post('addPosition', 'PositionController@addPosition')->name('addPosition');
@@ -37,6 +39,10 @@ Route::get('existPosition', 'PositionController@existPosition')->name('existPosi
 Route::patch('editPosition/{id}', 'PositionController@editPosition')->name('editPosition');
 Route::patch('deletePosition/{id}', 'PositionController@deletePosition')->name('deletePosition');
 
+Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
+Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
+Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
+Route::get('editEmployee', 'employeeViewController@editEmployee')->name('editEmployee');
 // Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 // Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
 // Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
@@ -44,5 +50,10 @@ Route::patch('deletePosition/{id}', 'PositionController@deletePosition')->name('
 Route::resource('request','leaveRequesController');
 
 Route::resource('employee','employeeViewController');
+Route::get('/deleteProfile/{id}' , 'employeeViewController@deleteProfile')->name('deleteProfile');
 Route::resource('deleteEmployee', 'employeeViewController');
-Route::delete('/deleteEmployee/{id}', 'EmployeeController@destroy')->name('deleteEmployee');
+Route::get('/accepted/{id}', 'leaveRequesController@accepted')->name('accepted');
+Route::get('/rejected/{id}', 'leaveRequesController@rejected')->name('rejected');
+Route::resource('deleteEmployee', 'employeeViewController');
+Route::post('/addProfile/{id}','HomeController@addProfile')->name('addProfile');
+Route::get('/deleteProfile/{id}','HomeController@deleteProfile')->name('deleteProfile');

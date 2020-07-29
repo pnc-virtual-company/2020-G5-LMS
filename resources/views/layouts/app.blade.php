@@ -22,7 +22,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+ 
     <style>
         table.glyphicon-hover .glyphicon {
             visibility: hidden;
@@ -80,15 +80,20 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModals"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('myModals').submit();">
+                                     {{ __('Profile') }}
+                                 </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
@@ -182,9 +187,113 @@
                 }
             });
         }
+      $('#editEmployee').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') 
+            var firstName = button.data('firstname')
+            var lastName = button.data('lastname')
+            var department_id = button.data('departmentid')
+            var position_id = button.data('positionid')
+            var manager_id = button.data('manager')
+            var startDate = button.data('startdate')
+            var profile = button.data('profile')
+            var showprofile = "{{asset('img/')}}/" + profile
+            var deleteProfile = "{{url('deleteProfile')}}/"+ id
+            var route = "{{url('employee')}}/"+id
+            var modal = $(this)
+            modal.find('#firstName').val(firstName)
+            modal.find('#lastName').val(lastName)
+            modal.find('#lastName').val(lastName)
+            modal.find('#deparment').val(department_id)
+            modal.find('#position').val(position_id)
+            modal.find('#manager').val(manager_id)
+            modal.find('#startdate').val(startDate)
+            modal.find('#showProfile').attr("src",showprofile)
+            modal.find('#deleteProfile').attr("href",deleteProfile)
+            modal.find('#modalEdit').attr("action",route)
+        });
     });
 
+    // search 
+    $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+      
     </script>
-
+    <!-- The Modal -->
+<div class="modal" id="myModals">
+    <div class="modal-dialog">
+       <div class="modal-content" style="border-radius: 20px;">
+       
+             <!-- Modal Header -->
+             <div class="modal-header">
+               <h4 class="modal-title">My information</h4>
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+       
+             <!-- Modal body -->
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-8">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th class="header-table">Firstname</th>
+                                <td>{{Auth::user()->firstName}}</td>
+                            </tr>
+                            <tr>
+                                <th class="header-table">Lastname</th>
+                                <td>{{Auth::user()->lastName}}</td>
+                            </tr>
+                              <tr>
+                                <th class="header-table">Department</th>
+                                <td>{{Auth::user()->department->department}}</td>
+                              </tr>
+                              <tr>
+                                <th class="header-table">Position</th>
+                                <td>{{Auth::user()->position->position}}</td>
+                              </tr>
+                              <tr>
+                                <th class="header-table">Startdate</th>
+                                <td>{{Auth::user()->startDate}}</td>
+                              </tr>
+                         </table>
+                     </div>
+                     <div class="col-4">
+                            <div class="form-group">
+                                <img style=" width: 80px;height:80px" src="{{asset('img/'.Auth::user()->profile)}}">
+                            </div>
+                            <div class="form-group">
+                                <form id="addProfile" action="{{route('addProfile', Auth::user()->id)}}" enctype="multipart/form-data" method="post">
+                                    @csrf
+                                    @method('POST')
+                                        <label for="addPicture"><i class="material-icons">add</i></label>
+                                        <input type="file" id="addPicture" name="image" autocomplete="addPicture" style="display:none">
+                                        <label for="newPicture"><i class="material-icons">edit</i></label>
+                                        <input type="file" id="newPicture" name="newPicture" autocomplete="newPicture" style="display:none">
+                                        <a href="{{route('deleteProfile' , Auth::user()->id)}}" style="color: black"  onclick="return confirm('Are you sure you want to delete this item')"><i class="material-icons">delete</i></a>
+                                </form>
+                            </div>
+                    </div>
+                 </div>
+             </div>
+             <!-- Modal footer -->
+             <div class="modal-footer">
+               <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+             </div>
+       
+           </div>
+         </div>
+   </div>
 </body>
 </html>
+<script>
+    $('#addPicture').change(function(){
+        $('#addProfile').submit();
+    });
+    $('#newPicture').change(function(){
+        $('#addProfile').submit();
+    });
+</script>

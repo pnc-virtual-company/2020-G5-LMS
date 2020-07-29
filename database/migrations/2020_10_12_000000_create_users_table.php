@@ -21,8 +21,9 @@ class CreateUsersTable extends Migration
             $table->integer('role')->default(4); // 1 : admin 2 : HR 3: manager 4 : employee
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('manager');
             $table->date('startDate')->date('Y-m-d H:i:s');
-            $table->string('profile');
+            $table->string('profile')->default('profile.png');
             $table->integer('position_id')->unsigned();
             $table->foreign('position_id')
                   ->references('id')
@@ -33,6 +34,7 @@ class CreateUsersTable extends Migration
                     ->references('id')
                     ->on('departments')
                     ->onDelete('cascade');
+            $table->integer('manager_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -46,10 +48,65 @@ class CreateUsersTable extends Migration
                 'email'=>'admin@gmail.com',
                 'role'=>1,
                 'password'=>bcrypt('password'),
+                'manager'=>1,
                 'startDate'=>'2020-07-10',
                 'profile'=>'profile.png',
                 'position_id'=>1,
                 'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> null,
+                'remember_token' => Str::random(10)
+            ),
+         );
+
+        DB::table('users')->insert(
+            array(
+                'id'=>2,
+                'firstName'=>'Normal',
+                'lastName'=>'User',
+                'email'=>'normal@gmail.com',
+                'role'=>2,
+                'password'=>bcrypt('password'),
+                'startDate'=>'2020-07-10',
+                'profile'=>'profile.png',
+                'position_id'=>1,
+                'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> null,
+                'remember_token' => Str::random(10)
+            ),
+         );
+        DB::table('users')->insert(
+            array(
+                'id'=>3,
+                'firstName'=>'makara',
+                'lastName'=>'deu',
+                'email'=>'makara@gmail.com',
+                'role'=>3,
+                'password'=>bcrypt('password'),
+                'startDate'=>'2020-07-10',
+                'profile'=>'profile.png',
+                'position_id'=>1,
+                'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> null,
+                'remember_token' => Str::random(10)
+            ),
+         );
+        DB::table('users')->insert(
+            array(
+                'id'=>4,
+                'firstName'=>'seyha',
+                'lastName'=>'eng',
+                'email'=>'seyha@gmail.com',
+                'role'=>4,
+                'password'=>bcrypt('password'),
+                'startDate'=>'2020-07-10',
+                'profile'=>'profile.png',
+                'position_id'=>1,
+                'department_id'=>1,
+                'department_id'=>1,
+                'manager_id'=> 3,
                 'remember_token' => Str::random(10)
             ),
          );
