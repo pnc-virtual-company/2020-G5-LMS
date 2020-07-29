@@ -49896,6 +49896,25 @@ module.exports = __webpack_require__(/*! C:\Users\student\Desktop\2020-G5-LMS\re
 
 /******/ });
 
+//Display data when user research
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+  var value = $(this).val().toLowerCase();
+  $("#myTable tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+   });
+//  mouse hover on table
+   var trIndex = null;
+ $("#btn tr td").mouseenter(function() {
+   trIndex = $(this).parent();
+   $(trIndex).find("td:last-child").html('<a href="#"><i class="material-icons" style="color:red;">mode_delete</i></a>&nbsp;&nbsp;<a href="#"><i class="material-icons">mode_edit</i></a>');
+ });
+// remove button on tr mouseleave
+$("#btn tr td").mouseleave(function() {
+   $(trIndex).find('td:last-child').html("&nbsp;");
+ });
+}); 
  $(document).ready(function(){
 //   //  mouse hover on table
 //   var trIndex = null;

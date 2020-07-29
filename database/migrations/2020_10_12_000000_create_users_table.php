@@ -56,7 +56,6 @@ public function up()
         'remember_token' => Str::random(10)
         ),
     );
-
     DB::table('users')->insert(
         array(
         'id'=>2,
