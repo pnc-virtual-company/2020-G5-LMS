@@ -2,20 +2,16 @@
 
 @section('content')
   <div class="container">
-    <div class="col-12">
       <div class="row">
         <div class="col-6">
-            <h2>Employee</h2>
-      </div>
-        <div class="col-6">
-        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
-        <a href="" class="btn btn-warning text-light mt-5 float-right" data-toggle="modal" data-target="#modalCreate">+Create</a>
-        @endif
-         
+          <h1>Employee</h1>
         </div>
-    </div>
-      {{-- <a href="{{route('employee.create')}}" class="btn btn-primary mt-5 float-right">Create</a> --}}
-      <table class="table table-borderless" id="employee" class="display" cellspacing="0">
+        <div class="col-6">
+        <a href="" class="btn btn-warning text-white float-right btn-lg" data-toggle="modal" data-target="#modalCreate" style="border-radius: 20px;"><strong>+ Create</strong></a>
+         </div>
+         
+         {{-- <a href="{{route('employee.create')}}" class="btn btn-primary mt-5 float-right">Create</a> --}}
+      <table class="table table-borderless mt-4" id="employee" class="display" cellspacing="0">
         <tr>
           <th>Firstname</th>
           <th>Lastname</th>
@@ -134,58 +130,61 @@
            <!-- The Modal add employee -->
            <div class="modal" id="modalCreate">
             <div class="modal-dialog">
-              <div class="modal-content" style="border-radius: 20px;">
+              <div class="modal-content" style="border-radius: 20px; width: 600px;">
               
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Add employee</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
                 <!-- Modal body -->
+                <h4 class="mt-4 pl-4">Add employee</h4>
                 <div class="modal-body">
                   <form action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                      <div class="contianer">
                        <div class="row">
+
                         <div class="col-6">
                           <div class="form-group">
                             <input type="text" name="first" placeholder="Firstname" class="form-control" required>
                           </div>
                         </div>
+
                         <div class="col-6">
                           <div class="form-group">
                             <input type="text" name="last" placeholder="Lastname" class="form-control" required>
                           </div>
                         </div>
+
                         <div class="col-6">
                           <div class="form-group">
                             <input type="email" name="email" placeholder="email" class="form-control" required>
                           </div>
                         </div>
+
                         <div class="col-6">
                           <div class="form-group">
                             <input type="password" name="password" placeholder="password" class="form-control" required>
                           </div>
                         </div>
+
                         <div class="col-6">
                          <div class="form-group">
                           ​​<select name="depart" class="form-control" required>
-                            <option value="">--Department--</option>
+                            <option selected disabled>Department</option>
                              @foreach ($department as $departments)
                              <option value="{{$departments->id}}">{{$departments->department}}</option>
                              @endforeach
                         </select>
                          </div>
                         </div>
+
                         ​<div class="col-6">
                           <div class="form-group">
                             <input type="date" name="date" class="form-control" required>
                           </div>
                         </div>
+                        
                          <div class="col-6">
                           <div class="form-group">
                              <select name="manager" class="form-control">
-                               <option value="">--Manager--</option>
+                               <option selected disabled>Manager</option>
                                 @foreach ($users as $user)
                                   @if ($user->role == 3)
                                   <option value="{{$user->id}}">{{$user->firstName}}</option>
@@ -197,7 +196,7 @@
                          <div class="col-6">
                           <div class="form-group">
                             <select name="position" class="form-control" required>
-                              <option value="">--Position--</option>
+                              <option selected disabled>Position</option>
                               @foreach ($position as $positions)
                               <option value="{{$positions->id}}">{{$positions->position}}</option>
                               @endforeach
@@ -207,7 +206,7 @@
                           <div class="col-6">
                             <div class="form-group">
                               <select name="role" class="form-control" required>
-                              <option>role</option>
+                              <option selected disabled>role</option>
                               <option value="1">Admin</option>
                               <option value="2">HR Officer</option>
                               <option value="3">Manager</option>
@@ -216,7 +215,7 @@
                           </div>
                           </div>
                          <button type="button" class="btn float-right">DISCARD</button>
-                        <button type="submit" class="btn TEXT-warning ">CREATE</button>
+                        <button type="submit" class="btn TEXT-warning float-right">CREATE</button>
                        </div>
                      </div>
                   </form>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLeavesTable extends Migration
+class CreateLeaveRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLeavesTable extends Migration
      */
     public function up()
     {
-        Schema::create('leaves', function (Blueprint $table) {
+        Schema::create('leave_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->date('startDate')->date('Y-m-d H:i:s');
             $table->date('endDate')->date('Y-m-d H:i:s');
@@ -28,7 +28,7 @@ class CreateLeavesTable extends Migration
                   ->onDelete('cascade');
             $table->timestamps();
         });
-        DB::table('leaves')->insert(
+        DB::table('leave_requests')->insert(
             array(
                 'id'=>1,
                 'startDate'=>'2020-07-10',
@@ -49,6 +49,6 @@ class CreateLeavesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaves');
+        Schema::dropIfExists('leave_requests');
     }
 }
