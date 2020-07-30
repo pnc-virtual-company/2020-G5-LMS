@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 @foreach ($leaves as $leave)
-                <tbody id="btn">
+                <tbody>
                     <tr>
                     
                         <td class="action">{{$leave->startDate}}</td>
