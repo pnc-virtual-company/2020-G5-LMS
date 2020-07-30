@@ -134,6 +134,7 @@ class employeeViewController extends Controller
         $user->delete();
         return back();
     }
+    
     public function deleteProfile($id)
     {
         $user = User::find($id);
