@@ -24,10 +24,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $leaves = LeaveRequest::all();
+        $user = User::find(Auth::user()->id);
+        $leaves = $user->leave_requests;
         return view('home',compact('leaves'));
     }
- 
+
     public function addLeavesRequest(Request $request){
         $user = Auth::user()->id;
         $leavesRequest = new LeaveRequest;

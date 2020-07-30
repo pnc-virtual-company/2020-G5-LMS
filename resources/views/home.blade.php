@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 @foreach ($leaves as $leave)
-                <tbody id="btn">
+                <tbody>
                     <tr>
                     
                         <td class="action">{{$leave->startDate}}</td>
@@ -34,15 +34,15 @@
                         <td class="action">{{$leave->duration}}</td>
                         <td class="action">{{$leave->types}}</td>
                         <td class="action">
-                            @if ($leave -> status == 1)
+                            @if ($leave->status == 1)
                             <a href=""><button class="bnt btn-primary">Requested</button></a>
                             @endif
-                            @if($leave -> status == 2) 
+                            @if($leave->status == 2) 
                             <a href=""><button class="bnt btn-danger">Cancelled</button></a>
-                            @elseif($leave -> status == 3)
+                            @elseif($leave->status == 3)
                             <a href=""><button class="bnt btn-danger">Rejected</button></a>
 
-                            @elseif($leave -> status == 4)
+                            @elseif($leave->status == 4)
                             <a href=""><button class="bnt btn-success">Accepted</button></a>
                             @endif
                         </td>
