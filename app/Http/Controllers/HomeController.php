@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LeaveRequest;
+use App\Leave;
 use App\User;
 class HomeController extends Controller
 {

@@ -47,23 +47,17 @@
                             @endif
                         </td>
                         
-                        <td>
-                            <a href="#" data-toggle="modal" data-target="#deleteLeaves"
+                        <td class="action_hidden">
+                          <a href="{{route('deleteYourLeave',$leave->id)}}" onclick="return confirm('Are you sure you want to delete this item?')"><i  class="material-icons text-danger">delete</a>
+                            <a href="#"
+                            data-toggle="modal" data-target="#editLeaves"
                             data-id={{$leave->id}}
-                            ><i class="material-icons text-danger">delete</i></a>
-
-                            @if ($leave->status == 1)
-                              <a href="#" 
-                              data-toggle="modal" data-target="#editLeaves"
-                              data-id={{$leave->id}}
-                              data-startdate={{$leave->startDate}}
-                              data-enddate={{$leave->endDate}}
-                              data-duration={{$leave->duration}}
-                              data-type={{$leave->types}}
-                              data-comment={{$leave->comment}}
-                              ><i class="material-icons text-success">edite</i></a>
-                            @endif
-                            
+                            data-startdate={{$leave->startDate}}
+                            data-enddate={{$leave->endDate}}
+                            data-duration={{$leave->duration}}
+                            data-type={{$leave->types}}
+                            data-comment={{$leave->comment}}
+                            ><i class="material-icons text-success">edite</i></a>
                         </td>
 
                     </tr>
@@ -151,7 +145,7 @@
   <!-- End The Modal add leave request-->
 
 @include('pages.yourLeave.updateLeaves')
-@include('pages.yourLeave.deleteLeave')
+{{-- @include('pages.yourLeave.deleteLeave') --}}
 
   
 @endsection
