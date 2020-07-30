@@ -47,12 +47,9 @@
                             @endif
                         </td>
                         
-                        <td>
-                            <a href="#" data-toggle="modal" data-target="#deleteLeaves"
-                            data-id={{$leave->id}}
-                            ><i class="material-icons text-danger">delete</i></a>
-
-                            <a href="#" 
+                        <td class="action_hidden">
+                          <a href="{{route('deleteYourLeave',$leave->id)}}" onclick="return confirm('Are you sure you want to delete this item?')"><i  class="material-icons text-danger">delete</a>
+                            <a href="#"
                             data-toggle="modal" data-target="#editLeaves"
                             data-id={{$leave->id}}
                             data-startdate={{$leave->startDate}}
@@ -148,7 +145,7 @@
   <!-- End The Modal add leave request-->
 
 @include('pages.yourLeave.updateLeaves')
-@include('pages.yourLeave.deleteLeave')
+{{-- @include('pages.yourLeave.deleteLeave') --}}
 
   
 @endsection

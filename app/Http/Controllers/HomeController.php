@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LeaveRequest;
+use App\Leave;
 use App\User;
 class HomeController extends Controller
 {
@@ -84,7 +85,7 @@ class HomeController extends Controller
         }
 
         public function destroy($id){
-            $leavesRequest = Leave::find($id);
+            $leavesRequest = LeaveRequest::find($id);
             $leavesRequest->delete();
             return redirect('/home');
         }
