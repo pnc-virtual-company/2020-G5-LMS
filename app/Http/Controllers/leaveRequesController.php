@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use \App\Mail\AcceptMail;
-
+use \App\Mail\rejectRequested;
 class leaveRequesController extends Controller
 {
     /**
@@ -115,8 +115,21 @@ class leaveRequesController extends Controller
     public function rejected($id)
     {
        $leaveRequest = LeaveRequest::find($id);
+       $email = $leaveRequest->user->email;
+       $firstName = $leaveRequest->user->firstName;
+       $lastName = $leaveRequest->user->lastName;
        $leaveRequest->status = 3;
        $leaveRequest->save();
+       $verify =[
+           'startDate' => $leaveRequest->startDate,
+           'endDate' => $leaveRequest->endDate,
+           'type' => $leaveRequest->types,
+           'comment' => $leaveRequest->comment,
+           'firstName' => $firstName,
+           'lastName' => $lastName,
+
+       ];
+       \Mail::to($email)->send(new rejectRequested($verify));
        return back();
     }
 
