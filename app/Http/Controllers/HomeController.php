@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\LeaveRequest;
 use App\Leave;
 use App\User;
+use Mail;
 class HomeController extends Controller
 {
     /**
@@ -41,7 +42,14 @@ class HomeController extends Controller
         $leavesRequest->types = $request->type;
         $leavesRequest->user_id = $user;
         $leavesRequest->save();
+        $data = array('name'=>"Makara Deu");
+        Mail::send('mail', $data, function($message) {
+            $message->to('deumakara3@gmail.com', 'Tutorials Point')->subject
+            ('Laravel HTML Testing Mail');
+            $message->from('makaradeu99@gmail.com','Admin');
+        });
         return redirect('/home');
+        // echo "HTML Email Sent. Check your inbox.";
     }
 
     public function udateLeave(Request $request, $id){
