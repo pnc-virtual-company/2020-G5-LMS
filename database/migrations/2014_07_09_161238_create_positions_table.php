@@ -23,7 +23,19 @@ class CreatePositionsTable extends Migration
         DB::table('positions')->insert(
             array(
                 'id'=>1, // 1: admin 2 : HR 3: manager 4 : employee
-                'position'=> 'Admin'
+                'position'=> 'IT Admin'
+            )
+        );
+        DB::table('positions')->insert(
+            array(
+                'id'=>2, // 1: admin 2 : HR 3: manager 4 : employee
+                'position'=> 'WEB Coordinator'
+            )
+        );
+        DB::table('positions')->insert(
+            array(
+                'id'=>3, // 1: admin 2 : HR 3: manager 4 : employee
+                'position'=> 'WEB Training'
             )
         );
     }

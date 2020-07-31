@@ -69,7 +69,7 @@ public function up()
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
-        'manager_id'=> null,
+        'manager_id'=> 1,
         'remember_token' => Str::random(10)
         ),
     );
@@ -86,7 +86,7 @@ public function up()
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
-        'manager_id'=> null,
+        'manager_id'=> 1,
         'remember_token' => Str::random(10)
         ),
         );
@@ -103,7 +103,7 @@ public function up()
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
-        'manager_id'=> 3,
+        'manager_id'=> 1,
         'remember_token' => Str::random(10)
         ),
     );
