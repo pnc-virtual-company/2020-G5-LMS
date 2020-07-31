@@ -35,7 +35,7 @@
               @endif
               
               <td class="action">{{$user->startDate}}</td>
-              <td class="action_hidden">
+              <td class="">
                 <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$user->id}}"><i  class="material-icons text-danger">delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  

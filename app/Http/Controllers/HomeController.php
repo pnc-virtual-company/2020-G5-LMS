@@ -32,6 +32,16 @@ class HomeController extends Controller
 
     public function addLeavesRequest(Request $request){
         $user = Auth::user()->id;
+        $manager = Auth::user()->manager_id;
+        $users = User::all();
+        foreach($users as $userManager){
+            if($manager == $userManager->id){
+                $email = $userManager->email;
+            }
+        }
+        
+        // $userName = Auth::user()->firstName;
+        
         $leavesRequest = new LeaveRequest;
         $leavesRequest->startDate = $request->startDate;
         $leavesRequest->endDate = $request->endDate;
@@ -44,12 +54,11 @@ class HomeController extends Controller
         $leavesRequest->save();
         $data = array('name'=>"Makara Deu");
         Mail::send('mail', $data, function($message) {
-            $message->to('deumakara3@gmail.com', 'Tutorials Point')->subject
+            $message->to($email, 'Tutorials Point')->subject
             ('Laravel HTML Testing Mail');
-            $message->from('makaradeu99@gmail.com','Admin');
+            $message->from('makaradeu99@gmail.com','LSM System');
         });
         return redirect('/home');
-        // echo "HTML Email Sent. Check your inbox.";
     }
 
     public function udateLeave(Request $request, $id){
