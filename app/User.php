@@ -10,7 +10,7 @@ use App\Department;
 class User extends Authenticatable
 {
     use Notifiable;
-
+ 
     /**
      * The attributes that are mass assignable.
      *
@@ -40,6 +40,11 @@ class User extends Authenticatable
     public function leaves(){
         return $this->hasMany(Leave::class);
     }
+
+    public function leave_requests(){
+        return $this->hasMany(LeaveRequest::class);
+    }
+
     public function department(){
         return $this->belongsTo(Department::class);
     }  

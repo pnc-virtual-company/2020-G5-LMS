@@ -39,21 +39,27 @@
             <div class="container">
 
             <div class="menu">
-                <a class="navbar-brand" href="{{ route('home') }}" onfocus="myFunction(this)">
+                <a class="navbar-brand" href="{{route('home')}}" onfocus="myFunction(this)">
                     {{ __('Your leave') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('request.index') }}" onfocus="myFunction(this)">
+                @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 3)
+                <a class="navbar-brand" href="{{route('request.index')}}" onfocus="myFunction(this)">
                     {{ __('Leaves') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('employee.index') }}" onfocus="myFunction(this)">
+                @endif
+
+                @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                <a class="navbar-brand" href="{{route('employee.index')}}" onfocus="myFunction(this)">
                     {{ __('Employees') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('showPosition') }}" onfocus="myFunction(this)">
+                <a class="navbar-brand" href="{{route('showPosition')}}" onfocus="myFunction(this)">
                     {{ __('Positions') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('showDepartment') }}" onfocus="myFunction(this)">
+                <a class="navbar-brand" href="{{route('showDepartment')}}" onfocus="myFunction(this)">
                     {{ __('Department') }}
                 </a>
+                @endif
+
             </div>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -187,6 +193,8 @@
                 }
             });
         }
+
+        //edit employee
       $('#editEmployee').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var id = button.data('id') 
@@ -214,13 +222,6 @@
         });
     });
 
-    // search 
-    $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
       
     </script>
     <!-- The Modal -->
