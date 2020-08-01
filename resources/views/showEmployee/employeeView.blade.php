@@ -58,6 +58,7 @@
       </table>
     </div> 
 </div>
+@foreach ($users as $user)
 <!-- Start model delete employee -->
 <div class="modal" id="deleteEmployee{{$user->id}}">
   <div class="modal-dialog">
@@ -78,6 +79,7 @@
     </div>
   </div>
 </div>
+@endforeach
 <!-- End modal delete employee -->
 
 <!-- Modal edit employee -->
