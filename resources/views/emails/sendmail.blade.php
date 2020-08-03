@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Mail</title>
+    <style>
+        .row-body{
+            width:80%;
+	        margin:0 auto;
+            border: 2px solid rgb(43, 42, 42);
+            background-color: rgb(223, 222, 222);
+            display: flex;
+        }
+        .col1-6{
+            width:40%;
+	        padding:10px;
+	        margin-left:30px;
+        }
+        .col2-6{
+            width:40%;
+	        padding:10px;
+	        margin-left:30px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
 
             <div class="col-12">
-               {{-- <p>Hello {{ $details['fristNameManager'] }} {{ $details['lastNameManager'] }},</p> --}}
                <br>
                <p>Employee {{ $details['firstName'] }} {{ $details['lastName'] }} has submitted the following leave request for approval:</p>
             </div>
@@ -20,14 +37,14 @@
         </div>
 
     <div class="card p-3 bg-light ml-5" style="width: 700px">
-        <div class="row">
-            <div class="col-6">
+        <div class="row-body">
+            <div class="col1-6">
                 <p><strong>Start date </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $details['startdate'] }}</p>
                 <p><strong>Emd date </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $details['enddate'] }}</p>
                 <p><strong>Duration </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $details['duration'] }}</p>
                 <p><strong>Leave type </strong> &nbsp;&nbsp;&nbsp;&nbsp;{{ $details['type'] }}</p>
             </div>
-            <div class="col-6">
+            <div class="col2-6">
                 <p><strong>Comment </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $details['comment'] }}</p>
                 <p><strong>Employee </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $details['firstName'] }} {{ $details['lastName'] }}</p>
                 <p><strong>Staus </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Request</p>
