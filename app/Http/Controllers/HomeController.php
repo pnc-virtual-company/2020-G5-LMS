@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LeaveRequest;
-use App\Leave;
 use App\User;
-use Mail;
+use \App\Mail\SendMail;
 class HomeController extends Controller
 {
     /**
@@ -32,32 +31,39 @@ class HomeController extends Controller
 
     public function addLeavesRequest(Request $request){
         $user = Auth::user()->id;
+        $firstName = Auth::user()->firstName;
+        $lastName = Auth::user()->lastName;
         $manager = Auth::user()->manager_id;
         $users = User::all();
         foreach($users as $userManager){
             if($manager == $userManager->id){
                 $email = $userManager->email;
+                // $fristNameManager = $userManager->firstName;
+                // $lastNameManager = $userManager->lastName;
             }
         }
-        
-        // $userName = Auth::user()->firstName;
-        
         $leavesRequest = new LeaveRequest;
         $leavesRequest->startDate = $request->startDate;
         $leavesRequest->endDate = $request->endDate;
         $leavesRequest->duration = $request->duration;
         if($request->comment != ''){
             $leavesRequest->comment = $request->comment;
-        }
+        } 
         $leavesRequest->types = $request->type;
         $leavesRequest->user_id = $user;
+        $details = [
+            'startdate' => $request->startDate,
+            'enddate' => $request->endDate,
+            'duration' => $request->duration,
+            'comment' => $request->comment,
+            'type' => $request->type,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            // 'fristNameManager' => $fristNameManager,
+            // 'lastNameManager' => $lastNameManager
+        ];
         $leavesRequest->save();
-        $data = array('name'=>"Makara Deu");
-        Mail::send('mail', $data, function($message) {
-            $message->to($email, 'Tutorials Point')->subject
-            ('Laravel HTML Testing Mail');
-            $message->from('makaradeu99@gmail.com','LSM System');
-        });
+        \Mail::to($email)->send(new SendMail($details));
         return redirect('/home');
     }
 
@@ -106,6 +112,10 @@ class HomeController extends Controller
             $leavesRequest = LeaveRequest::find($id);
             $leavesRequest->delete();
             return redirect('/home');
+        }
+
+        public function viewMail(){
+            return view('emails.acceptmail');
         }
     }
 
