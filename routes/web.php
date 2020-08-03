@@ -52,9 +52,13 @@ Route::resource('request','leaveRequesController');
 Route::resource('employee','employeeViewController');
 Route::get('/deleteProfile/{id}' , 'employeeViewController@deleteProfile')->name('deleteProfile');
 Route::resource('deleteEmployee', 'employeeViewController');
+
 Route::get('/accepted/{id}', 'leaveRequesController@accepted')->name('accepted');
 Route::get('/rejected/{id}', 'leaveRequesController@rejected')->name('rejected');
+
 Route::resource('deleteEmployee', 'employeeViewController');
 Route::post('/addProfile/{id}','HomeController@addProfile')->name('addProfile');
 Route::get('/deleteProfile/{id}','HomeController@deleteProfile')->name('deleteProfile');
-Route::get('/deleteYourLeave/{id}', 'HomeController@destroy')->name('deleteYourLeave');
+// Route::delete('/deleteEmployee/{id}', 'employeeViewController@destroy')->name('deleteEmployee');
+
+Route::get('/viewmail', 'HomeController@viewMail')->name('viewmail');

@@ -55,7 +55,7 @@
                                 <a href="{{route('rejected', $leaves->id)}}" class="btn btn-white" style="border: 1px solid">Reject</a>
                             </td>
                             @else
-                                @if ($leaves->status == 4)
+                                @if ($leaves->status == 4) 
                                     <td>Accepted</td>
                                 @endif
                                 @if ($leaves->status == 3)
