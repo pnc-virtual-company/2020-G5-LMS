@@ -24,7 +24,7 @@
    <div class="container">
        <h4>Leave Request</h4>
        <p>Dear {{ $verify['firstName'] }} {{ $verify['lastName'] }}</p>
-       <p>The time off you requested has been approved.</p>
+       <p>The time off your requested has been rejected.</p>
        <table>
            <tr>
                <td>From</td>
