@@ -139,6 +139,7 @@
         });
       });
 
+
     // Edit event
       $('#editLeaves').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -159,6 +160,7 @@
 
           modal.find('#modalEditLeave').attr("action",route)
       });
+
     // delete event
       $('#deleteLeaves').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -167,6 +169,15 @@
           var modal = $(this) 
           modal.find('#modelDeleteLeave').attr("action",route)
       });
+
+    // // delete employee
+    //   $('#deleteEmployee').on('show.bs.modal', function (event) {
+    //       var button = $(event.relatedTarget) // Button that triggered the modal
+    //       var id = button.data('id')
+    //       var route = "{{url('deleteEmployee')}}/"+id
+    //       var modal = $(this) 
+    //       modal.find('#deleteEmployeeModel').attr("action",route)
+    //   });
 
 
     });
@@ -222,7 +233,7 @@
         });
     });
 
-      
+    
     </script>
     <!-- The Modal -->
 <div class="modal" id="myModals">

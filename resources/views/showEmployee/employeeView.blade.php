@@ -35,7 +35,7 @@
               @endif
               
               <td class="action">{{$user->startDate}}</td>
-              <td class="action_hidden">
+              <td>
                 <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$user->id}}"><i  class="material-icons text-danger">delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
@@ -54,6 +54,7 @@
       </table>
     </div> 
 </div>
+
 @foreach ($users as $user)
 <!-- Start model delete employee -->
 <div class="modal" id="deleteEmployee{{$user->id}}">
@@ -61,7 +62,7 @@
     <div class="modal-content" style="border-radius: 20px; width: 350px; margin:0 auto;">
       <!-- Modal body -->
       <div class="modal-body">
-          <form action="{{route('employee.destroy',$user->id)}}" method="POST">
+        <form method="POST" action="{{route('employee.destroy', $user->id)}}">
               @csrf
               @method('DELETE')
             <div class="from-group">
@@ -81,7 +82,7 @@
 <!-- Modal edit employee -->
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="border-radius: 20px; width: 350px; margin:0 auto;">
+    <div class="modal-content" style="border-radius: 20px; width: 500px; margin:0 auto;">
       <div class="modal-body">
         <h3>Edit employee</h3>
         <form method="POST"  id="modalEdit" enctype="multipart/form-data">
@@ -115,9 +116,9 @@
                 <select id="manager" name="manager" class="form-control" >
                   <option selected disabled value="">No manager</option>
                    @foreach ($users as $user)
-                     @if ($user->role == 3)
+                   
                      <option value="{{$user->id}}" {{ ($user->manager_id == $user->id) ? 'selected' : ''}}>{{$user->firstName}}</option> 
-                     @endif
+                    
                     @endforeach
                 </select>
              </div>
@@ -127,7 +128,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <img class="card-img-top mb-2" style="width: 80px;height:80px" class="mx-auto d-block" id="showProfile"/>
+                <img class="card-img-top mb-2" style="width: 90px;height:90px" class="mx-auto d-block" id="showProfile"/>
               </div>
               <div class="form-group">
                 <label for="picture" style="cursor: pointer"><i class="material-icons">add</i></label>
@@ -139,8 +140,8 @@
             </div>
           </div>
           <div class="form-group">
-          <a href="#" data-dismiss="modal" style="margin-left:45%" class=" text-dark font-weight-bold">DISCARD</a>&nbsp;
-           <button type="submit" class="btn text-warning btn-link font-weight-bold">UPDATE</button>
+           <button type="submit" class="btn text-warning float-right">UPDATE</button>
+           <button data-dismiss="modal" class="btn text-dark float-right">DISCARD</button>
           <div>
         </form>
       </div>
@@ -210,9 +211,9 @@
                              <select name="manager" class="form-control">
                                <option selected disabled>Manager</option>
                                 @foreach ($users as $user)
-                                  @if ($user->role == 3)
+                                  
                                   <option value="{{$user->id}}">{{$user->firstName}}</option>
-                                  @endif  
+                                 
                                 @endforeach
                              </select>
                           </div>

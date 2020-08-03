@@ -23,7 +23,25 @@ class CreateDepartmentsTable extends Migration
         DB::table('departments')->insert(
             array(
                 'id'=>1,
-                'department'=> 'Education',
+                'department'=> 'Traning and education team',
+            )
+        );
+        DB::table('departments')->insert(
+            array(
+                'id'=>2,
+                'department'=> 'External ralation team',
+            )
+        );
+        DB::table('departments')->insert(
+            array(
+                'id'=>3,
+                'department'=> 'Admin and finance team',
+            )
+        );
+        DB::table('departments')->insert(
+            array(
+                'id'=>4,
+                'department'=> 'Selection',
             )
         );
     }
