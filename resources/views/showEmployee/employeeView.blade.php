@@ -35,7 +35,7 @@
               @endif
               
               <td class="action">{{$user->startDate}}</td>
-              <td class="action_hidden">
+              <td class="">
                 <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$user->id}}"><i  class="material-icons text-danger">delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
@@ -147,7 +147,6 @@
   </div>
 </div>
 <!--End Modal -->
-   
 @endsection
            <!-- The Modal add employee -->
            <div class="modal" id="modalCreate">
@@ -202,7 +201,6 @@
                             <input type="date" name="date" class="form-control" required>
                           </div>
                         </div>
-                        
                          <div class="col-6">
                           <div class="form-group">
                              <select name="manager" class="form-control">
@@ -236,7 +234,7 @@
                              </select>
                           </div>
                           </div>
-                         <button type="button" class="btn float-right">DISCARD</button>
+                         <button type="button" class="btn float-right" data-dismiss="modal">DISCARD</button>
                         <button type="submit" class="btn TEXT-warning float-right">CREATE</button>
                        </div>
                      </div>

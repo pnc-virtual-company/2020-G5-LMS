@@ -257,6 +257,14 @@
                                 <td>{{Auth::user()->position->position}}</td>
                               </tr>
                               <tr>
+                                <th class="header-table">Manager</th>
+                                @if (Auth::user()->manager_id == null)
+                                    <td class="action">No manager</td>
+                                  @else
+                                    <td class="action">{{Auth::user()->user->firstName}}</td>
+                                  @endif
+                              </tr>
+                              <tr>
                                 <th class="header-table">Startdate</th>
                                 <td>{{Auth::user()->startDate}}</td>
                               </tr>

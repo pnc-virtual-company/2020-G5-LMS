@@ -43,10 +43,6 @@ Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
 Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
 Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
 Route::get('editEmployee', 'employeeViewController@editEmployee')->name('editEmployee');
-// Route::get('/showEmployee', 'EmployeeController@index')->name('showEmployee');
-// Route::get('/showLeave', 'LeaveController@index')->name('showLeave');
-// Route::get('/showYourLeave', 'YourLeaveController@index')->name('showYourLeave');
-// Route::resource('/leave', 'leaveController');
 Route::resource('request','leaveRequesController');
 
 Route::resource('employee','employeeViewController');
@@ -58,3 +54,6 @@ Route::resource('deleteEmployee', 'employeeViewController');
 Route::post('/addProfile/{id}','HomeController@addProfile')->name('addProfile');
 Route::get('/deleteProfile/{id}','HomeController@deleteProfile')->name('deleteProfile');
 Route::get('/deleteYourLeave/{id}', 'HomeController@destroy')->name('deleteYourLeave');
+Route::post('email', 'Emailcontroller@emailEvent')->name('email');
+Route::get('getEmail', 'Emailcontroller@getEmail')->name('getEmail');
+

@@ -47,8 +47,9 @@
                             @endif
                         </td>
                         
-                        <td class="action_hidden">
+                        <td>
                           <a href="{{route('deleteYourLeave',$leave->id)}}" onclick="return confirm('Are you sure you want to delete this item?')"><i  class="material-icons text-danger">delete</a>
+                            @if($leave->status != 4 && $leave->status != 3)
                             <a href="#"
                             data-toggle="modal" data-target="#editLeaves"
                             data-id={{$leave->id}}
@@ -58,6 +59,7 @@
                             data-type={{$leave->types}}
                             data-comment={{$leave->comment}}
                             ><i class="material-icons text-success">edite</i></a>
+                            @endif
                         </td>
 
                     </tr>
@@ -85,11 +87,11 @@
               <div class="col-7">
 
                 <div class="form-group">
-                  <input type="date" placeholder="Strat date" class="form-control" id="txtFromDate" name="startDate">
+                  <input type="date" placeholder="Strat date" class="form-control" id="txtFromDate" name="startDate" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="date" placeholder="End date" class="form-control" id="txtToDate" onchange="dateDiff();" name="endDate">
+                  <input type="date" placeholder="End date" class="form-control" id="txtToDate" onchange="dateDiff();" name="endDate" required>
                 </div>
 
                 <div class="form-group">
@@ -98,7 +100,7 @@
                 </div>
 
                 <div class="form-group" class="form-control">
-                  <select name="type" class="form-control">
+                  <select name="type" class="form-control" required>
                       <option selected disabled>Leave type</option>
                       <option value="paid">Paid</option>
                       <option value="sick">Sick</option>
