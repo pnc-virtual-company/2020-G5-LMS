@@ -5,16 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .container{
+            margin-left: 20px;
+        }
+        table {
+          border-collapse: collapse;
+          width: 70%;
+        }
+        
+        table, td {
+          border: 1px solid black;
+          padding: 10px;
+        }
+        </style>
 </head>
 <body>
-    <h3>Leave Request</h3><br>
-    <p>Dear {{ $verify['firstName'] }} {{ $verify['lastName'] }},</p><br>
-    <p>The time of you requested has not been reject</p>
-    <div class="card p-3 bg-light ml-5">
-        <p><strong>From </strong> &nbsp;&nbsp; {{ $verify['startDate'] }}</p>
-        <p><strong>To &nbsp;&nbsp;{{ $verify['endDate'] }}</p>
-        <p><strong>Leave type &nbsp;&nbsp; {{ $verify['type'] }}</p>
-        <p><strong>Last Comment &nbsp;&nbsp; {{ $verify['comment'] }}</p>
-    </div>
+   <div class="container">
+       <h4>Leave Request</h4>
+       <p>Dear {{ $verify['firstName'] }} {{ $verify['lastName'] }}</p>
+       <p>The time off you requested has been approved.</p>
+       <table>
+           <tr>
+               <td>From</td>
+               <td>{{ $verify['startDate'] }}</td>
+           </tr>
+           <tr>
+               <td>To</td>
+               <td> {{ $verify['endDate'] }}</td>
+           </tr>
+           <tr>
+               <td>Type</td>
+               <td>{{ $verify['type'] }}</td>
+           </tr>
+           <tr>
+               <td>Last Comment</td>
+               <td>{{ $verify['comment'] }}</td>
+           </tr>
+       </table>
+   </div>
 </body>
 </html>

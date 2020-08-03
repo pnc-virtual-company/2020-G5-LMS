@@ -115,7 +115,7 @@ class HomeController extends Controller
         }
 
         public function viewMail(){
-            return view('emails.acceptmail');
+            return view('emails.sendmail');
         }
     }
 
