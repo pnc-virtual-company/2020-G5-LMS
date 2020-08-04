@@ -23,6 +23,7 @@ public function up()
         $table->string('password');
         $table->date('startDate')->date('Y-m-d H:i:s');
         $table->string('profile')->default('profile.png');
+        $table->integer('status')->default(1);
         $table->integer('position_id')->unsigned();
         $table->foreign('position_id')
         ->references('id')
