@@ -34,12 +34,16 @@
               @endif
               @if ($user->status == 1)
               <td class="action">Activate</td>
+              @else
+              <td class="action">Inactivate</td>
               @endif
               <td class="action">{{$user->startDate}}</td>
               <td>
                 @if (Auth::user()->role == 2)
                   @if ($user->status == 1)
-                 <a href="#" class="btn btn-default" style="border-radius:20px;border:1px solid">DEACTIVATE</a>
+              <a href="{{route('activate' , $user->id)}}" class="btn btn-default" style="border-radius:20px;border:1px solid">Deactivate</a>
+                @else
+                <a href="#" class="btn btn-primary" style="border-radius:20px;border:1px solid">Reactivate</a>
                  @endif
                 @endif
               </td>
