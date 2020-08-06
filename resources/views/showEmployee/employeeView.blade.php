@@ -1,16 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-      <div class="row">
-        <div class="col-6">
+         <!-- View of employee-->
+<div class="container">
+    <div class="row">
+      <div class="col-6">
           <h1>Employee</h1>
-        </div>
-        <div class="col-6">
+      </div>
+      <div class="col-6">
         <a href="" class="btn btn-warning text-white float-right btn-lg" data-toggle="modal" data-target="#modalCreate" style="border-radius: 20px;"><strong>+ Create</strong></a>
-         </div>
-         
-         {{-- <a href="{{route('employee.create')}}" class="btn btn-primary mt-5 float-right">Create</a> --}}
+      </div>
       <table class="table table-borderless mt-4" id="employee" class="display" cellspacing="0">
         <tr>
           <th>Firstname</th>
@@ -18,8 +17,8 @@
           <th>Department</th>
           <th>Position</th>
           <th>Manager</th>
+          <th>Status</th>
           <th>Start Date</th>
-          {{-- <th>Action</th> --}}
         </tr>
         @foreach ($users as $user)
           <tbody id="myTable">
@@ -33,9 +32,18 @@
               @else
                 <td class="action">{{$user->user->firstName}}</td>
               @endif
-              
+              @if ($user->status == 1)
+              <td class="action">Activate</td>
+              @endif
               <td class="action">{{$user->startDate}}</td>
               <td>
+                @if (Auth::user()->role == 2)
+                  @if ($user->status == 1)
+                 <a href="#" class="btn btn-default" style="border-radius:20px;border:1px solid">DEACTIVATE</a>
+                 @endif
+                @endif
+              </td>
+              <td class="">
                 <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$user->id}}"><i  class="material-icons text-danger">delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
                   data-id={{$user->id}}  
@@ -98,7 +106,7 @@
               </div>
               <div class="form-group">
                 <select class="form-control" id="deparment" name="department">
-                  <option selected disabled>Department</option>
+                <option selected disabled>Department</option>
                  @foreach($department as $departments)
                     <option value="{{$departments->id}}" {{ ($user->department_id == $departments->id) ? 'selected' : '' }}>{{$departments->department}}</option> 
                   @endforeach
@@ -116,9 +124,7 @@
                 <select id="manager" name="manager" class="form-control" >
                   <option selected disabled value="">No manager</option>
                    @foreach ($users as $user)
-                   
                      <option value="{{$user->id}}" {{ ($user->manager_id == $user->id) ? 'selected' : ''}}>{{$user->firstName}}</option> 
-                    
                     @endforeach
                 </select>
              </div>
@@ -145,50 +151,42 @@
           <div>
         </form>
       </div>
-    
     </div>
   </div>
 </div>
 <!--End Modal -->
-   
 @endsection
-           <!-- The Modal add employee -->
-           <div class="modal" id="modalCreate">
-            <div class="modal-dialog">
-              <div class="modal-content" style="border-radius: 20px; width: 600px;">
-              
-                <!-- Modal body -->
-                <h4 class="mt-4 pl-4">Add employee</h4>
+<!-- The Modal add employee -->
+ <div class="modal" id="modalCreate">
+     <div class="modal-dialog">
+         <div class="modal-content" style="border-radius: 20px; width: 600px;">
+            <!-- Modal body -->
+              <h4 class="mt-4 pl-4">Add employee</h4>
                 <div class="modal-body">
                   <form action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                      <div class="contianer">
                        <div class="row">
-
                         <div class="col-6">
                           <div class="form-group">
                             <input type="text" name="first" placeholder="Firstname" class="form-control" required>
                           </div>
                         </div>
-
                         <div class="col-6">
                           <div class="form-group">
                             <input type="text" name="last" placeholder="Lastname" class="form-control" required>
                           </div>
                         </div>
-
                         <div class="col-6">
                           <div class="form-group">
                             <input type="email" name="email" placeholder="email" class="form-control" required>
                           </div>
                         </div>
-
                         <div class="col-6">
                           <div class="form-group">
                             <input type="password" name="password" placeholder="password" class="form-control" required>
                           </div>
                         </div>
-
                         <div class="col-6">
                          <div class="form-group">
                           ​​<select name="depart" class="form-control" required>
@@ -199,21 +197,17 @@
                         </select>
                          </div>
                         </div>
-
                         ​<div class="col-6">
                           <div class="form-group">
                             <input type="date" name="date" class="form-control" required>
                           </div>
                         </div>
-                        
                          <div class="col-6">
                           <div class="form-group">
                              <select name="manager" class="form-control">
                                <option selected disabled>Manager</option>
                                 @foreach ($users as $user)
-                                  
                                   <option value="{{$user->id}}">{{$user->firstName}}</option>
-                                 
                                 @endforeach
                              </select>
                           </div>
@@ -239,15 +233,15 @@
                              </select>
                           </div>
                           </div>
-                         <button type="button" class="btn float-right">DISCARD</button>
-                        <button type="submit" class="btn TEXT-warning float-right">CREATE</button>
-                       </div>
-                     </div>
-                  </form>
+                        <button type="button" class="btn float-right" data-dismiss="modal">DISCARD</button>
+                      <button type="submit" class="btn TEXT-warning float-right">CREATE</button>
+                    </div>
                 </div>
-              </div>
+              </form>
             </div>
-           </div>
+         </div>
+     </div>
+</div>
 <style>
   .action_hidden{
     display: none;
