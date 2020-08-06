@@ -138,7 +138,6 @@
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
-
     // Edit event
       $('#editLeaves').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -159,6 +158,7 @@
 
           modal.find('#modalEditLeave').attr("action",route)
       });
+
     // delete event
       $('#deleteLeaves').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -167,8 +167,6 @@
           var modal = $(this) 
           modal.find('#modelDeleteLeave').attr("action",route)
       });
-
-
     });
  
     $(document).ready(function(){
@@ -222,7 +220,7 @@
         });
     });
 
-      
+    
     </script>
     <!-- The Modal -->
 <div class="modal" id="myModals">
@@ -258,7 +256,7 @@
                               </tr>
                               <tr>
                                 <th class="header-table">Manager</th>
-                                @if (Auth::user()->manager_id == null)
+                                @if(Auth::user()->manager_id == null)
                                     <td class="action">No manager</td>
                                   @else
                                     <td class="action">{{Auth::user()->user->firstName}}</td>
@@ -285,14 +283,13 @@
                                         <a href="{{route('deleteProfile' , Auth::user()->id)}}" style="color: black"  onclick="return confirm('Are you sure you want to delete this item')"><i class="material-icons">delete</i></a>
                                 </form>
                             </div>
-                    </div>
-                 </div>
-             </div>
-             <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+                <!-- Modal footer -->
              <div class="modal-footer">
                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
              </div>
-       
            </div>
          </div>
    </div>

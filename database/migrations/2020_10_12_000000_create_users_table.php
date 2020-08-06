@@ -23,6 +23,7 @@ public function up()
         $table->string('password');
         $table->date('startDate')->date('Y-m-d H:i:s');
         $table->string('profile')->default('profile.png');
+        $table->integer('status')->default(0);
         $table->integer('position_id')->unsigned();
         $table->foreign('position_id')
         ->references('id')
@@ -49,6 +50,7 @@ public function up()
         'password'=>bcrypt('password'),
         'startDate'=>'2020-07-10',
         'profile'=>'profile.png',
+        'status'=>0,
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
@@ -66,10 +68,11 @@ public function up()
         'password'=>bcrypt('password'),
         'startDate'=>'2020-07-10',
         'profile'=>'profile.png',
+        'status'=>1,
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
-        'manager_id'=> null,
+        'manager_id'=> 1,
         'remember_token' => Str::random(10)
         ),
     );
@@ -83,10 +86,11 @@ public function up()
         'password'=>bcrypt('password'),
         'startDate'=>'2020-07-10',
         'profile'=>'profile.png',
+        'status'=>0,
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
-        'manager_id'=> null,
+        'manager_id'=> 1,
         'remember_token' => Str::random(10)
         ),
         );
@@ -100,10 +104,11 @@ public function up()
         'password'=>bcrypt('password'),
         'startDate'=>'2020-07-10',
         'profile'=>'profile.png',
+        'status'=>1,
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
-        'manager_id'=> 3,
+        'manager_id'=> 1,
         'remember_token' => Str::random(10)
         ),
     );

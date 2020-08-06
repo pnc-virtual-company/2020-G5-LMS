@@ -46,32 +46,28 @@
                             <a href=""><button class="bnt btn-success">Accepted</button></a>
                             @endif
                         </td>
-                        
                         <td>
-                          <a href="{{route('deleteYourLeave',$leave->id)}}" onclick="return confirm('Are you sure you want to delete this item?')"><i  class="material-icons text-danger">delete</a>
-                            @if($leave->status != 4 && $leave->status != 3)
-                            <a href="#"
-                            data-toggle="modal" data-target="#editLeaves"
+                            <a href="#" data-toggle="modal" data-target="#deleteLeaves"
                             data-id={{$leave->id}}
-                            data-startdate={{$leave->startDate}}
-                            data-enddate={{$leave->endDate}}
-                            data-duration={{$leave->duration}}
-                            data-type={{$leave->types}}
-                            data-comment={{$leave->comment}}
-                            ><i class="material-icons text-success">edite</i></a>
-                            @endif
-                        </td>
-
-                    </tr>
-                </tbody>
-              
-                @endforeach
-                
-            </table>
-        </div>
-        
-    </div>
-
+                            ><i class="material-icons text-danger">delete</i></a>
+                            @if ($leave->status == 1)
+                              <a href="#" 
+                              data-toggle="modal" data-target="#editLeaves"
+                              data-id={{$leave->id}}
+                              data-startdate={{$leave->startDate}}
+                              data-enddate={{$leave->endDate}}
+                              data-duration={{$leave->duration}}
+                              data-type={{$leave->types}}
+                              data-comment={{$leave->comment}}
+                              ><i class="material-icons text-success">edite</i></a>
+                         @endif
+                    </td>
+                 </tr>
+              </tbody>
+             @endforeach
+        </table>
+    </div> 
+</div>
     <!-- The Modal add leave request-->
   <div class="modal" id="addLeave">
     <div class="modal-dialog">
@@ -135,7 +131,7 @@
               </div> 
           </div>
 
-            <button class="btn text-warning" style="float: right;">CREATE</button>
+            <button class="btn text-warning" style="float: right;" id="mail">CREATE</button>
             <button type="button" class="btn" data-dismiss="modal" style="float: right;">DISCARD</button>
 
         </form>
@@ -147,7 +143,7 @@
   <!-- End The Modal add leave request-->
 
 @include('pages.yourLeave.updateLeaves')
-{{-- @include('pages.yourLeave.deleteLeave') --}}
+@include('pages.yourLeave.deleteLeave')
 
   
 @endsection
