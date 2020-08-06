@@ -143,5 +143,20 @@ class employeeViewController extends Controller
         return back();
     }
 
+
+    public function deactive($id){
+        $user = User::find($id);
+        $user->status = 2;
+        $user->save();
+        return redirect('employee');
+    }
+
+    public function reactive($id){
+        $user = User::find($id);
+        $user->status = 1;
+        $user->save();
+        return redirect('employee');
+    }
+
 }
 

@@ -62,3 +62,6 @@ Route::get('/deleteProfile/{id}','HomeController@deleteProfile')->name('deletePr
 // Route::delete('/deleteEmployee/{id}', 'employeeViewController@destroy')->name('deleteEmployee');
 
 Route::get('/viewmail', 'HomeController@viewMail')->name('viewmail');
+
+Route::get('/deactive/{id}', 'employeeViewController@deactive')->name('deactive');
+Route::get('/reactive/{id}', 'employeeViewController@reactive')->name('reactive');
