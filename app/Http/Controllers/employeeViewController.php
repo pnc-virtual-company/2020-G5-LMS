@@ -142,5 +142,11 @@ class employeeViewController extends Controller
         $user->save();
         return back();
     }
+    public function employeeDeactivate($id){
+        $user=  User::find($id);
+        $user->status = 1;
+        $user->save();
+        return back();
+    }
 }
 

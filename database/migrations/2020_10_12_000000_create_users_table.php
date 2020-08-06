@@ -23,7 +23,7 @@ public function up()
         $table->string('password');
         $table->date('startDate')->date('Y-m-d H:i:s');
         $table->string('profile')->default('profile.png');
-        $table->integer('status')->default(0);
+        $table->integer('status')->default(1);
         $table->integer('position_id')->unsigned();
         $table->foreign('position_id')
         ->references('id')
@@ -50,7 +50,7 @@ public function up()
         'password'=>bcrypt('password'),
         'startDate'=>'2020-07-10',
         'profile'=>'profile.png',
-        'status'=>0,
+        'status'=>2,
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,
@@ -86,7 +86,7 @@ public function up()
         'password'=>bcrypt('password'),
         'startDate'=>'2020-07-10',
         'profile'=>'profile.png',
-        'status'=>0,
+        'status'=>2,
         'position_id'=>1,
         'department_id'=>1,
         'department_id'=>1,

@@ -43,7 +43,7 @@
                   @if ($user->status == 1)
                  <a href="#" class="btn btn-default" style="border-radius:20px;border:1px solid">DEACTIVATE</a>
                  @else
-                 <a href="" class="btn btn-primary" style="border-radius:20px;">REACTIVATE</a>
+                 <a href="{{route('deactivate',$user->id)}}" class="btn btn-primary" style="border-radius:20px;">REACTIVATE</a>
                  @endif
                 @endif
               </td>
