@@ -17,9 +17,9 @@
           <th>Lastname</th>
           <th>Department</th>
           <th>Position</th>
+          <th>Status</th>
           <th>Manager</th>
           <th>Start Date</th>
-          {{-- <th>Action</th> --}}
         </tr>
         @foreach ($users as $user)
           <tbody id="myTable">
@@ -28,6 +28,12 @@
               <td class="action">{{$user->lastName}}</td>
               <td class="action">{{$user->department->department}}</td> 
               <td class="action">{{$user->position->position}}</td>
+              @if ($user->status == 1)
+                <td class="action">Active</td>
+              @else
+                <td class="action">Inactive</td>
+              @endif
+              
               @if ($user->manager_id == null)
                 <td class="action">No manager</td>
               @else
@@ -35,6 +41,13 @@
               @endif
               
               <td class="action">{{$user->startDate}}</td>
+
+              @if ($user->status == 1)
+                <td class="action"><a href="{{route('deactive', $user->id)}}" class="btn btn-white" style="border: 1px solid">Deactive</a></td>
+              @else
+                <td class="action"><a href="{{route('reactive', $user->id)}}" class="btn btn-primary">Reactive</a></td>
+              @endif
+
               <td>
                 <a href="" data-toggle="modal"  data-target="#deleteEmployee{{$user->id}}"><i  class="material-icons text-danger">delete</i></a>
                 <a href="#" data-toggle="modal" data-target="#editEmployee" data-placement="right" title="edit!" data-placement="left"
@@ -52,7 +65,7 @@
           </tbody>
         @endforeach
       </table>
-    </div> 
+    </div>  
 </div>
 
 @foreach ($users as $user)
