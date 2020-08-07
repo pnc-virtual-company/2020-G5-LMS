@@ -46,12 +46,10 @@
                             <a href=""><button class="bnt btn-success">Accepted</button></a>
                             @endif
                         </td>
-                        
                         <td>
                             <a href="#" data-toggle="modal" data-target="#deleteLeaves"
                             data-id={{$leave->id}}
                             ><i class="material-icons text-danger">delete</i></a>
-
                             @if ($leave->status == 1)
                               <a href="#" 
                               data-toggle="modal" data-target="#editLeaves"
@@ -62,20 +60,14 @@
                               data-type={{$leave->types}}
                               data-comment={{$leave->comment}}
                               ><i class="material-icons text-success">edite</i></a>
-                            @endif
-                            
-                        </td>
-
-                    </tr>
-                </tbody>
-              
-                @endforeach
-                
-            </table>
-        </div>
-        
-    </div>
-
+                         @endif
+                    </td>
+                 </tr>
+              </tbody>
+             @endforeach
+        </table>
+    </div> 
+</div>
     <!-- The Modal add leave request-->
   <div class="modal" id="addLeave">
     <div class="modal-dialog">
@@ -91,11 +83,11 @@
               <div class="col-7">
 
                 <div class="form-group">
-                  <input type="date" placeholder="Strat date" class="form-control" id="txtFromDate" name="startDate">
+                  <input type="date" placeholder="Strat date" class="form-control" id="txtFromDate" name="startDate" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="date" placeholder="End date" class="form-control" id="txtToDate" onchange="dateDiff();" name="endDate">
+                  <input type="date" placeholder="End date" class="form-control" id="txtToDate" onchange="dateDiff();" name="endDate" required>
                 </div>
 
                 <div class="form-group">
@@ -104,7 +96,7 @@
                 </div>
 
                 <div class="form-group" class="form-control">
-                  <select name="type" class="form-control">
+                  <select name="type" class="form-control" required>
                       <option selected disabled>Leave type</option>
                       <option value="paid">Paid</option>
                       <option value="sick">Sick</option>

@@ -107,13 +107,11 @@ class HomeController extends Controller
             $user->save();
             return back();
         }
-
         public function destroy($id){
             $leavesRequest = LeaveRequest::find($id);
             $leavesRequest->delete();
             return redirect('/home');
         }
-
         public function viewMail(){
             return view('emails.sendmail');
         }

@@ -16,6 +16,7 @@
           <th>Lastname</th>
           <th>Department</th>
           <th>Position</th>
+          <th>Status</th>
           <th>Manager</th>
           <th>Status</th>
           <th>Start Date</th>
@@ -27,6 +28,12 @@
               <td class="action">{{$user->lastName}}</td>
               <td class="action">{{$user->department->department}}</td> 
               <td class="action">{{$user->position->position}}</td>
+              @if ($user->status == 1)
+                <td class="action">Active</td>
+              @else
+                <td class="action">Inactive</td>
+              @endif
+              
               @if ($user->manager_id == null)
                 <td class="action">No manager</td>
               @else
@@ -43,7 +50,7 @@
                   @if ($user->status == 1)
               <a href="{{route('activate' , $user->id)}}" class="btn btn-default" style="border-radius:20px;border:1px solid">Deactivate</a>
                 @else
-                <a href="#" class="btn btn-primary" style="border-radius:20px;border:1px solid">Reactivate</a>
+                 <a href="{{route('deactivate',$user->id)}}" class="btn btn-primary" style="border-radius:20px;">REACTIVATE</a>
                  @endif
                 @endif
               </td>
@@ -64,7 +71,7 @@
           </tbody>
         @endforeach
       </table>
-    </div> 
+    </div>  
 </div>
 
 @foreach ($users as $user)

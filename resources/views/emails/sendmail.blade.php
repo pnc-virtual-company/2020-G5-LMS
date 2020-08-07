@@ -28,14 +28,11 @@
 <body>
     <div class="container">
         <div class="row">
-
             <div class="col-12">
                <br>
                <p>Employee {{ $details['firstName'] }} {{ $details['lastName'] }} has submitted the following leave request for approval:</p>
             </div>
-
         </div>
-
     <div class="card p-3 bg-light ml-5" style="width: 700px">
         <div class="row-body">
             <div class="col1-6">
@@ -51,7 +48,10 @@
             </div>   
         </div>
     </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 673360867ba573adee7b2609eaeb9ae0276b0296
     <div class="row">
         <div class="col-12">
             <br>
