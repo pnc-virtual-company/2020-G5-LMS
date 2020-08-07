@@ -25,7 +25,7 @@
                             <td>{{$leaves->duration}}</td>
                             <td>{{$leaves->types}}</td>
                             @if ($leaves->status == 1)
-                            <td>
+                            <td> 
                                 <a href="{{route('accepted', $leaves->id)}}" class="btn btn-primary">Accept</a>
                                 <a href="{{route('rejected', $leaves->id)}}" class="btn btn-white" style="border: 1px solid">Reject</a>
                             </td>
