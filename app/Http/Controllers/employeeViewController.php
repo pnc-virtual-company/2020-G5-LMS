@@ -126,7 +126,7 @@ class employeeViewController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @4return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
@@ -142,21 +142,11 @@ class employeeViewController extends Controller
         $user->save();
         return back();
     }
-
-
-    public function deactive($id){
-        $user = User::find($id);
-        $user->status = 2;
-        $user->save();
-        return redirect('employee');
-    }
-
-    public function reactive($id){
-        $user = User::find($id);
+    public function employeeDeactivate($id){
+        $user=  User::find($id);
         $user->status = 1;
         $user->save();
-        return redirect('employee');
+        return back();
     }
-
 }
 

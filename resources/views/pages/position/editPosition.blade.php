@@ -1,6 +1,6 @@
 
 
-    <!-- Button to Open the Modal -->
+<!-- Button to Open the Modal -->
 <a href="#"data-toggle="modal" data-target="#modal{{$position->id}}"><span class="material-icons text-secondary float-right glyphicon">edit</span></a>
 
 <!-- The Modal -->
@@ -22,9 +22,8 @@
                     <button type="submit" class="btn text-warning float-right" data-toggle="modal" data-target="#myModal">EDIT</button>
                     <button type="button" class="btn float-right" data-dismiss="modal">DISCARD</button>
                 </div>
-        </div>   
-    </form> 
-    
-    </div>
-</div>
+             </div>   
+           </form> 
+        </div>
+     </div>
 </div>

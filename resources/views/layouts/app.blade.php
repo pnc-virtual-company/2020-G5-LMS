@@ -138,8 +138,6 @@
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
-
-
     // Edit event
       $('#editLeaves').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -169,17 +167,6 @@
           var modal = $(this) 
           modal.find('#modelDeleteLeave').attr("action",route)
       });
-
-    // // delete employee
-    //   $('#deleteEmployee').on('show.bs.modal', function (event) {
-    //       var button = $(event.relatedTarget) // Button that triggered the modal
-    //       var id = button.data('id')
-    //       var route = "{{url('deleteEmployee')}}/"+id
-    //       var modal = $(this) 
-    //       modal.find('#deleteEmployeeModel').attr("action",route)
-    //   });
-
-
     });
  
     $(document).ready(function(){
@@ -268,6 +255,14 @@
                                 <td>{{Auth::user()->position->position}}</td>
                               </tr>
                               <tr>
+                                <th class="header-table">Manager</th>
+                                @if(Auth::user()->manager_id == null)
+                                    <td class="action">No manager</td>
+                                  @else
+                                    <td class="action">{{Auth::user()->user->firstName}}</td>
+                                  @endif
+                              </tr>
+                              <tr>
                                 <th class="header-table">Startdate</th>
                                 <td>{{Auth::user()->startDate}}</td>
                               </tr>
@@ -288,14 +283,13 @@
                                         <a href="{{route('deleteProfile' , Auth::user()->id)}}" style="color: black"  onclick="return confirm('Are you sure you want to delete this item')"><i class="material-icons">delete</i></a>
                                 </form>
                             </div>
-                    </div>
-                 </div>
-             </div>
-             <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+                <!-- Modal footer -->
              <div class="modal-footer">
                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
              </div>
-       
            </div>
          </div>
    </div>
