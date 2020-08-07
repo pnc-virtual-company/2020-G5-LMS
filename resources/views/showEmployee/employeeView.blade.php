@@ -238,7 +238,7 @@
                           </div>
                           </div>
                         <button type="button" class="btn float-right" data-dismiss="modal">DISCARD</button>
-                      <button type="submit" class="btn TEXT-warning float-right">CREATE</button>
+                      <button type="submit" class="btn TEXT-warning float-right">CREATED</button>
                     </div>
                 </div>
               </form>
