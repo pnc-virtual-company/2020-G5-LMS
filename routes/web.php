@@ -56,10 +56,6 @@ Route::resource('deleteEmployee', 'employeeViewController');
 Route::post('/addProfile/{id}','HomeController@addProfile')->name('addProfile');
 Route::get('/deleteProfile/{id}','HomeController@deleteProfile')->name('deleteProfile');
 Route::get('/deleteYourLeave/{id}', 'HomeController@destroy')->name('deleteYourLeave');
-Route::post('email', 'Emailcontroller@emailEvent')->name('email');
-Route::get('getEmail', 'Emailcontroller@getEmail')->name('getEmail');
-
-// Route::delete('/deleteEmployee/{id}', 'employeeViewController@destroy')->name('deleteEmployee');
 
 Route::get('/viewmail', 'HomeController@viewMail')->name('viewmail');
 Route::get('activate/{id}','employeeViewController@employeeActivate')->name('activate');

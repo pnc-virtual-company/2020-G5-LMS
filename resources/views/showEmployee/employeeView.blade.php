@@ -18,7 +18,6 @@
           <th>Position</th>
           <th>Status</th>
           <th>Manager</th>
-          <th>Status</th>
           <th>Start Date</th>
         </tr>
         @foreach ($users as $user)
@@ -39,18 +38,13 @@
               @else
                 <td class="action">{{$user->user->firstName}}</td>
               @endif
-              @if ($user->status == 1)
-              <td class="action">Activate</td>
-              @else
-              <td class="action">Inactivate</td>
-              @endif
               <td class="action">{{$user->startDate}}</td>
               <td>
                 @if (Auth::user()->role == 2)
                   @if ($user->status == 1)
               <a href="{{route('activate' , $user->id)}}" class="btn btn-default" style="border-radius:20px;border:1px solid">Deactivate</a>
                 @else
-                 <a href="{{route('deactivate',$user->id)}}" class="btn btn-primary" style="border-radius:20px;">REACTIVATE</a>
+                 <a href="{{route('deactivate',$user->id)}}" class="btn btn-primary" style="border-radius:20px;">Reactive</a>
                  @endif
                 @endif
               </td>
