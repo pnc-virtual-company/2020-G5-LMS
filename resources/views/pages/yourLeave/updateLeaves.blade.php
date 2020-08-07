@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                   <input type="date" placeholder="Strat date" class="form-control" id="editTxtFromDate" name="startDate">
-                </div>
+                </div> 
 
                 <div class="form-group">
                   <input type="date" placeholder="End date" class="form-control" id="TeditxtToDate" onchange="dateDiffEdit();" name="endDate">
