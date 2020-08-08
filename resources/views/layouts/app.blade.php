@@ -30,6 +30,9 @@
         table.glyphicon-hover td:hover .glyphicon {
             visibility: visible;
         }
+        .nav-hover a:hover {
+            background-color: rgb(241, 241, 241);
+        }
     </style>
 </head>
 <body>
@@ -38,38 +41,33 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
-            <div class="menu">
-                <a class="navbar-brand" href="{{route('home')}}" onfocus="myFunction(this)">
-                    {{ __('Your leave') }}
-                </a>
-                @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 3)
-                <a class="navbar-brand" href="{{route('request.index')}}" onfocus="myFunction(this)">
-                    {{ __('Leaves') }}
-                </a>
-                @endif
-
-                @if (Auth::user()->role == 1 || Auth::user()->role == 2)
-                <a class="navbar-brand" href="{{route('employee.index')}}" onfocus="myFunction(this)">
-                    {{ __('Employees') }}
-                </a>
-                <a class="navbar-brand" href="{{route('showPosition')}}" onfocus="myFunction(this)">
-                    {{ __('Positions') }}
-                </a>
-                <a class="navbar-brand" href="{{route('showDepartment')}}" onfocus="myFunction(this)">
-                    {{ __('Department') }}
-                </a>
-                @endif
-
-            </div>
-
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav mr-auto nav-hover">
+                        <a class="navbar-brand" href="{{route('home')}}" onfocus="myFunction(this)">
+                            {{ __('Your leave') }}
+                        </a>
+                        @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 3)
+                        <a class="navbar-brand" href="{{route('request.index')}}" onfocus="myFunction(this)">
+                            {{ __('Leaves') }}
+                        </a>
+                        @endif
+        
+                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                        <a class="navbar-brand" href="{{route('employee.index')}}" onfocus="myFunction(this)">
+                            {{ __('Employees') }}
+                        </a>
+                        <a class="navbar-brand" href="{{route('showPosition')}}" onfocus="myFunction(this)">
+                            {{ __('Positions') }}
+                        </a>
+                        <a class="navbar-brand" href="{{route('showDepartment')}}" onfocus="myFunction(this)">
+                            {{ __('Department') }}
+                        </a>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
