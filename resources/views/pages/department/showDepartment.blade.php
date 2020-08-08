@@ -5,9 +5,9 @@
 
     <div class="row">
         <div class="col-2"></div>
-        <div class="col-4"><h1>Department</h1></div>
+        <div class="col-4"><h2>Department</h2></div>
         <div class="col-4">
-            <button type="button" class="btn btn-warning btn-lg text-white float-right" style="border-radius: 20px" data-toggle="modal" data-target="#add">
+            <button type="button" class="btn btn-warning btn-md text-white float-right" style="border-radius: 20px" data-toggle="modal" data-target="#add">
                <strong>+ Create</strong>
               </button>
         </div>
