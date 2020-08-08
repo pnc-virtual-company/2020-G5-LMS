@@ -31,7 +31,8 @@
             visibility: visible;
         }
         .nav-hover a:hover {
-            background-color: rgb(241, 241, 241);
+            text-decoration: underline;
+            color: blue;
         }
     </style>
 </head>
