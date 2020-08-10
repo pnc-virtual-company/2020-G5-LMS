@@ -11,6 +11,9 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
+            @if (session('message'))
+                <div class="alert alert-danger">{{ session('message') }}</div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <h4 class="text-primary mb-3">Leave Management System</h4>
